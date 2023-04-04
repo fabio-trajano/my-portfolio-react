@@ -1,4 +1,5 @@
 import React from "react";
+import Typewriter from 'typewriter-effect';
 
 const Data = () => {
   return (
@@ -59,7 +60,15 @@ const Data = () => {
       </h1>
       <h3 className="home__subtitle">Full-Stack Web Developer 👨‍💻</h3>
       <p className="home__description">
-        I'm based in Porto and I'm passionate about problem-solving, innovation and  learning new things!
+        <Typewriter
+            options={{
+            strings: ["I'm based in Porto.",  "I'm passionate about problem-solving. ", "And I love to learn new things!"],
+            autoStart: true,
+            loop: true,
+            delay: 60,
+            deleteSpeed: 20,
+          }}
+        />
       </p>
 
       <a href="#contact" className="button button--flex">
