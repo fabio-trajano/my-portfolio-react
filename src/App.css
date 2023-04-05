@@ -98,7 +98,7 @@ img {
 }
 
 .section {
-  padding: 6rem 0 2rem;
+  padding: 5.5rem 0 2rem;
 }
 
 .section__title {
@@ -109,7 +109,7 @@ img {
 .section__subtitle {
   display: block;
   font-size: var(--small-font-size);
-  margin-bottom: 4rem;
+  margin-bottom: 3.5rem;
 }
 
 .section__title, .section__subtitle {
@@ -150,7 +150,6 @@ img {
   align-items: center;
 }
 
-/*=============== BREAKPOINTS ===============*/
 /* For large devices */
 @media screen and (max-width: 992px) {
   .container {
