@@ -45,11 +45,6 @@
     text-align: left;
 }
 
-.button__centered {
-  /* margin-left: 25%;
-  margin-right: 25%; */
-}
-
 /* For large devices */
 @media screen and (max-width: 992px) {
     .about__container {
