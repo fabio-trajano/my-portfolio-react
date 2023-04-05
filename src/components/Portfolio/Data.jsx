@@ -16,26 +16,29 @@ export const projectsData = [
     id: 2,
     image: Work2,
     title: "App movil",
-    category: "app",
+    category: "React",
     url: "https://www.github.com/fabio-trajno/"
   },
   {
     id: 3,
     image: Work3,
     title: "Brand design",
-    category: "design",
+    category: "Rails",
+    url: "https://www.github.com/fabio-trajno/"
   },
   {
     id: 4,
     image: Work4,
     title: "App movil",
-    category: "app",
+    category: "Rails",
+    url: "https://www.github.com/fabio-trajno/"
   },
   {
     id: 5,
     image: Work5,
     title: "Web design",
-    category: "web",
+    category: "Rails",
+    url: "https://www.github.com/fabio-trajno/"
   },
 ];
 

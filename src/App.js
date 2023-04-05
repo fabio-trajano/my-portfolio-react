@@ -5,6 +5,7 @@ import Home from './components/home/Home';
 import About from './components/about/About';
 import Skills from './components/skills/Skills';
 import Work from './components/Portfolio/Work';
+import Contact from './components/contact/Contact';
 import ScrollUp from './components/scrollup/ScrollUp';
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
       <Skills />
       <Work />
       <ScrollUp/>
-
+      <Contact />
      </main>
     </>
   );
