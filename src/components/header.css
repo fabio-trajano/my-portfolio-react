@@ -51,6 +51,7 @@
 /* For medium devices */
 @media screen and (max-width: 768px) {
   .header {
+      display: none;
       top: initial;
       bottom: 0;
   }
