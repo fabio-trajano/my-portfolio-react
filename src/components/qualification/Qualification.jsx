@@ -79,7 +79,7 @@ const Qualification = () => {
                   Le Wagon
                 </span>
                 <div className="qualification__calender">
-                  <i className="uil uil-calendar-alt"></i> March 2023
+                  <i className="uil uil-calendar-alt"></i> March/2023
                 </div>
               </div>
             </div>
