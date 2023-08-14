@@ -21,7 +21,7 @@ const About = () => {
           </p>
 
           <a download="" href={CV} className="button button--flex button__centered">
-            Download CV
+            Download my CV
             <svg
               class="button__icon"
               xmlns="http://www.w3.org/2000/svg"
