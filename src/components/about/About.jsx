@@ -17,7 +17,7 @@ const About = () => {
           {/* <Info /> */}
 
           <p className="about__description">
-          I am a full-stack web developer with a unique background in the culinary industry and mechanical engineering. With experience in project management and research in engineering, as well as managing my own restaurant, I have encountered diverse situations that have solidified my desire to work in tech, particularly in web development. After spending years in the food industry, I decided to pursue my passion for technology and embark on a new career path. My adaptability, quick learning, and ability to thrive in fast-paced environments make me a valuable asset to any team.
+          I'm a full-stack web developer with a unique background in the culinary industry and mechanical engineering. With experience in project management and research in engineering, as well as managing my own restaurant, I have encountered diverse situations that have solidified my desire to work in tech, particularly in web development. After spending years in the food industry, I decided to pursue my passion for technology and embark on a new career path. My adaptability, quick learning, and ability to thrive in fast-paced environments make me a valuable asset to any team.
           </p>
 
           <a download="" href={CV} className="button button--flex button__centered">
