@@ -3,7 +3,7 @@ import './App.css';
 import Header from './components/Header';
 import Home from './components/home/Home';
 import About from './components/about/About';
-import Skills from './components/skills/Skills';
+// import Skills from './components/skills/Skills';
 import Services from './components/services/Services';
 import Work from './components/Portfolio/Work';
 import Contact from './components/contact/Contact';
@@ -20,7 +20,7 @@ function App() {
       <About />
       <Qualification />
       <Services />
-      <Skills />
+      {/* <Skills /> */}
       <Work />
       <ScrollUp/>
       <Contact />

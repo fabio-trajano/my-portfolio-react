@@ -125,7 +125,7 @@
         grid-template-columns: repeat(3, 218px);
     }
   }
-
+  
   /* For medium devices */
   @media screen and (max-width: 768px) {
     .services__container {
@@ -140,7 +140,7 @@
         font-size: 1.5rem;
     }
   }
-
+  
   @media screen and (max-width: 576px) {
     .services__modal-content {
         padding: 4.5rem 1.5rem 2.5rem;
@@ -150,7 +150,7 @@
         padding: 0;
     }
   }
-
+  
   /* For small devices */
   @media screen and (max-width: 350px) {
     .services__container {
@@ -161,3 +161,4 @@
         padding-right: 6rem;
     }
   }
+  
