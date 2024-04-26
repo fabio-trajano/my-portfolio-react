@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./qualification.css";
 
 const Qualification = () => {
-  const [toggleState, setToggleState] = useState(1);
+  const [toggleState, setToggleState] = useState(2);
 
   const toggleTab = (index) => {
     setToggleState(index);
@@ -11,7 +11,7 @@ const Qualification = () => {
   return (
     <section className="qualification section">
       <h2 className="section__title">Qualification</h2>
-      <span className="section__subtitle">My personel journey</span>
+      <span className="section__subtitle">My journey</span>
 
       <div className="qualification__container container">
         <div className="qualification__tabs">
@@ -91,7 +91,7 @@ const Qualification = () => {
                   Universidade do Porto
                 </span>
                 <div className="qualification__calender">
-                  <i className="uil uil-calendar-alt"></i> 2020 - Ongoing
+                  <i className="uil uil-calendar-alt"></i> 2020 - 2023
                 </div>
               </div>
 
@@ -138,10 +138,10 @@ const Qualification = () => {
               <div>
                 <h3 className="qualification__title">Backend Software Developer Intern</h3>
                 <span className="qualification__subtitle">
-                  Blip.pt
+                  Blip.pt | Fanduel
                 </span>
                 <div className="qualification__calender">
-                  <i className="uil uil-calendar-alt"></i> Sept/23
+                  <i className="uil uil-calendar-alt"></i> Sept/23 - Present
                 </div>
               </div>
             </div>
@@ -153,7 +153,7 @@ const Qualification = () => {
                   Freelance
                 </span>
                 <div className="qualification__calender">
-                  <i className="uil uil-calendar-alt"></i> April/23 - Present
+                  <i className="uil uil-calendar-alt"></i> April/23 - Sept/23
                 </div>
               </div>
 
@@ -231,7 +231,7 @@ const Qualification = () => {
 
 
           </div>
-          <span className="moreinfo__section">* My complete journey is available at my <a href="https://www.linkedin.com/in/fabio-trajano/" target="_blank">Linkedin</a></span>
+          <span className="moreinfo__section">* More info about my experience and trainnings on my <a href="https://www.linkedin.com/in/fabio-trajano/" target="_blank">Linkedin</a></span>
         </div>
       </div>
     </section>
