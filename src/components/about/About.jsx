@@ -1,8 +1,8 @@
 import React from "react";
 import "./about.css";
 import AboutImg from "../../assets/perfil-about.JPG";
-import CV from "../../assets/fabioramalho-cv.pdf";
-// import Info from "./Info";
+import CV from "../../assets/fabioramalho-cv-2024.pdf";
+//import Info from "./Info";
 
 const About = () => {
   return (
@@ -17,8 +17,7 @@ const About = () => {
           {/* <Info /> */}
 
           <p className="about__description">
-          I'm a backend software developer with a unique background in the culinary industry and mechanical engineering. With experience in project management and research in engineering, as well as managing my own restaurant, I have encountered diverse situations that have solidified my desire to work in tech, particularly in web development. After spending years in the food industry, I decided to pursue my passion for technology and embark on a new career path. My adaptability, quick learning, and ability to thrive in fast-paced environments make me a valuable asset to any team.
-          </p>
+          With a passion for technology, problem-solving, and innovation, I bring a diverse background and a unique perspective from mechanical engineering and restaurant management to software development. Specializing in backend development, I apply my skills to drive impactful solutions and contribute to innovative projects. Committed to continuous learning and growth, I thrive in fast-paced environments and am adaptable to new challenges, making me a valuable asset to any team.</p>
 
           <a download="" href={CV} className="button button--flex button__centered">
             Download my CV
