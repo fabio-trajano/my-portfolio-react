@@ -136,24 +136,24 @@ const Qualification = () => {
               </div>
 
               <div>
-                <h3 className="qualification__title">Backend Software Developer Intern</h3>
+                <h3 className="qualification__title">Associate Backend Software Developer</h3>
                 <span className="qualification__subtitle">
-                  Blip.pt
+                  Blip.pt - Fanduel
                 </span>
                 <div className="qualification__calender">
-                  <i className="uil uil-calendar-alt"></i> Sept/23
+                  <i className="uil uil-calendar-alt"></i> Jun/24 - Ongoing
                 </div>
               </div>
             </div>
 
             <div className="qualification__data">
               <div>
-                <h3 className="qualification__title">Web Developer</h3>
+                <h3 className="qualification__title">Backend Software Developer Intern</h3>
                 <span className="qualification__subtitle">
-                  Freelance
+                  Blip.pt  - Fanduel
                 </span>
                 <div className="qualification__calender">
-                  <i className="uil uil-calendar-alt"></i> April/23 - Present
+                  <i className="uil uil-calendar-alt"></i> Sept/23 - May/24
                 </div>
               </div>
 
@@ -172,12 +172,12 @@ const Qualification = () => {
               </div>
 
               <div>
-                <h3 className="qualification__title">Cook</h3>
+                <h3 className="qualification__title">Web Developer</h3>
                 <span className="qualification__subtitle">
-                  Hilton Hotels - Porto
+                Freelancer
                 </span>
                 <div className="qualification__calender">
-                  <i className="uil uil-calendar-alt"></i> 2021 - 2022
+                  <i className="uil uil-calendar-alt"></i> 2023 - 2024
                 </div>
               </div>
             </div>

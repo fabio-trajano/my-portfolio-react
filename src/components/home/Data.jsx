@@ -58,7 +58,7 @@ const Data = () => {
         <br />
         I'm Fábio.
       </h1>
-      <h3 className="home__subtitle">Full-Stack Web Developer 👨‍💻</h3>
+      <h3 className="home__subtitle">Backend Software Developer 👨‍💻</h3>
       <p className="home__description">
         <Typewriter
             options={{
