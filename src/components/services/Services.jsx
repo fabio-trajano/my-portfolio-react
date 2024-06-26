@@ -56,7 +56,7 @@ const Services = () => {
                 <li className="services__modal-service">
                   <i className="uil uil-check-circle services__modal-icon"></i>
                   <p className="services__modal-info">
-                    Spring, SpringBoot and Quarkus
+                    Spring, SpringBoot, Quarkus
                   </p>
                 </li>
 
@@ -77,7 +77,7 @@ const Services = () => {
                 <li className="services__modal-service">
                   <i className="uil uil-check-circle services__modal-icon"></i>
                   <p className="services__modal-info">
-                    Kafka, Storm
+                    Kafka, Storm, RabbitMQ
                   </p>
                 </li>
 
@@ -91,15 +91,22 @@ const Services = () => {
                 <li className="services__modal-service">
                   <i className="uil uil-check-circle services__modal-icon"></i>
                   <p className="services__modal-info">
-                    Docker and Colima
+                    Docker, Colima
                   </p>
                 </li>
 
                 <li className="services__modal-service">
                   <i className="uil uil-check-circle services__modal-icon"></i>
                   <p className="services__modal-info">
-                    Postman and Insomnia
+                    Postman, Insomnia, Swagger
                   </p>
+                </li>
+
+                <li className="services__modal-service">
+                  <i className="uil uil-check-circle services__modal-icon"></i>
+                   <p className="services__modal-info">
+                       MySQL, PostgreSQL, Cassandra
+                   </p>
                 </li>
 
 
@@ -159,6 +166,20 @@ const Services = () => {
                   <i className="uil uil-check-circle services__modal-icon"></i>
                   <p className="services__modal-info">
                   Buildkite
+                  </p>
+                </li>
+
+                <li className="services__modal-service">
+                  <i className="uil uil-check-circle services__modal-icon"></i>
+                  <p className="services__modal-info">
+                    SonarCloud
+                  </p>
+                </li>
+
+                <li className="services__modal-service">
+                  <i className="uil uil-check-circle services__modal-icon"></i>
+                  <p className="services__modal-info">
+                    AWS
                   </p>
                 </li>
 

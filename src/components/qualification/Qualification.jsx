@@ -141,7 +141,6 @@ const Qualification = () => {
                   Blip.pt - Fanduel
                 </span>
                 <div className="qualification__calender">
-                  <i className="uil uil-calendar-alt"></i> Sept/23 - Present
                   <i className="uil uil-calendar-alt"></i> Jun/24 - Ongoing
                 </div>
               </div>
@@ -154,7 +153,6 @@ const Qualification = () => {
                   Blip.pt  - Fanduel
                 </span>
                 <div className="qualification__calender">
-                  <i className="uil uil-calendar-alt"></i> April/23 - Sept/23
                   <i className="uil uil-calendar-alt"></i> Sept/23 - May/24
                 </div>
               </div>

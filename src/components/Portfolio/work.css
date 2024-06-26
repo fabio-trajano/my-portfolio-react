@@ -69,6 +69,17 @@
   color: var(--container-color);
 }
 
+.custom__link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.custom__link:hover {
+  text-decoration: underline;
+  color: var(--title-color);
+}
+
+
 /*==================== MEDIA QUERIES ====================*/
 /* For large devices */
 @media screen and (max-width: 992px) {
