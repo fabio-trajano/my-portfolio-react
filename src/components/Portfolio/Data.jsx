@@ -9,49 +9,49 @@ export const projectsData = [
   {
     id: 1,
     image: Work1,
-    linktext: "Demo",
-    title: "PocketSommelier",
-    category: "RubyOnRails",
-    url: "https://www.pocketsommelier.me/"
+    linktext: "Source Code",
+    title: "PocketSommelier - Ruby on Rails",
+    category: "Full Stack",
+    url: "https://github.com/AndreNelas93/pocketsommelier"
   },
   {
      id: 4,
      image: Work6,
      linktext: "Source Code",
-     title: "Chess Backend - JAVA",
-     category: "Java/Spring",
+     title: "Chess Backend - Java/SpringBoot",
+     category: "Back End",
      url: "https://github.com/fabio-trajano/chess-java"
   },
   {
     id: 4,
     image: Work7,
     linktext: "Source Code",
-    title: "Financial Analysis API - JAVA",
-    category: "Java/Spring",
+    title: "Financial Analysis API - Java/SpringBoot",
+    category: "Back End",
     url: "https://github.com/fabio-trajano/java-financial-analysis"
 },
   {
     id: 5,
     image: Work5,
-    title: "Restaurant API - Django(DRF)",
+    title: "Restaurant API - Python/Django",
     linktext: "Source Code",
-    category: "Python/Django",
+    category: "Back End",
     url: "https://github.com/fabio-trajano/Meta-backend-capstone-project/tree/master/MetaCapstoneProject"
   },
   {
     id: 2,
     image: Work2,
     linktext: "Source Code",
-    title: "Petbnb",
-    category: "RubyOnRails",
+    title: "Petbnb - Ruby on Rails",
+    category: "Full Stack",
     url: "https://github.com/AndreNelas93/petbnb"
   },
   {
     id: 3,
     image: Work3,
-    title: "Calculator",
+    title: "Basic Calculator - React",
     linktext: "Source Code",
-    category: "React/JavaScript",
+    category: "Full Stack",
     url: "https://github.com/fabio-trajano/react-calculators/tree/master"
   },
 ];
@@ -61,16 +61,10 @@ export const projectsNav = [
   {
     name: "All",
   },
-   {
-      name: "Java/Spring",
-   },
   {
-    name: "RubyOnRails",
+      name: "Back End",
   },
   {
-    name: "React/JavaScript",
-  },
-  {
-    name: "Python/Django",
+    name: "Full Stack",
   },
 ];
