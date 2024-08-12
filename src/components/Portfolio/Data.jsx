@@ -2,6 +2,8 @@ import Work1 from "../../assets/project1.png";
 import Work2 from "../../assets/project2.png";
 import Work3 from "../../assets/project3.png";
 import Work5 from "../../assets/project5.png";
+import Work6 from "../../assets/project6.png";
+import Work7 from "../../assets/project7.png";
 
 export const projectsData = [
   {
@@ -9,9 +11,25 @@ export const projectsData = [
     image: Work1,
     linktext: "Demo",
     title: "PocketSommelier",
-    category: "Rails",
+    category: "RubyOnRails",
     url: "https://www.pocketsommelier.me/"
   },
+  {
+     id: 4,
+     image: Work6,
+     linktext: "Source Code",
+     title: "Chess Backend - JAVA",
+     category: "Java/Spring",
+     url: "https://github.com/fabio-trajano/chess-java"
+  },
+  {
+    id: 4,
+    image: Work7,
+    linktext: "Source Code",
+    title: "Financial Analysis API - JAVA",
+    category: "Java/Spring",
+    url: "https://github.com/fabio-trajano/java-financial-analysis"
+},
   {
     id: 5,
     image: Work5,
@@ -25,7 +43,7 @@ export const projectsData = [
     image: Work2,
     linktext: "Source Code",
     title: "Petbnb",
-    category: "Ruby on Rails",
+    category: "RubyOnRails",
     url: "https://github.com/AndreNelas93/petbnb"
   },
   {
@@ -33,16 +51,9 @@ export const projectsData = [
     image: Work3,
     title: "Calculator",
     linktext: "Source Code",
-    category: "React",
+    category: "React/JavaScript",
     url: "https://github.com/fabio-trajano/react-calculators/tree/master"
   },
-  // {
-  //   id: 4,
-  //   image: Work4,
-  //   title: "Real-time Weather",
-  //   category: "Others",
-  //   url: "https://www.github.com/fabio-trajano/"
-  // },
 ];
 
 // projects
@@ -50,11 +61,14 @@ export const projectsNav = [
   {
     name: "All",
   },
+   {
+      name: "Java/Spring",
+   },
   {
-    name: "Ruby on Rails",
+    name: "RubyOnRails",
   },
   {
-    name: "React",
+    name: "React/JavaScript",
   },
   {
     name: "Python/Django",
