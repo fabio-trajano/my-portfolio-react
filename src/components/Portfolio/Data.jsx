@@ -15,7 +15,7 @@ export const projectsData = [
     url: "https://github.com/AndreNelas93/pocketsommelier"
   },
   {
-     id: 4,
+     id: 2,
      image: Work6,
      linktext: "Source Code",
      title: "Chess Backend - Java/SpringBoot",
@@ -23,7 +23,7 @@ export const projectsData = [
      url: "https://github.com/fabio-trajano/chess-java"
   },
   {
-    id: 4,
+    id: 3,
     image: Work7,
     linktext: "Source Code",
     title: "Financial Analysis API - Java/SpringBoot",
@@ -31,7 +31,7 @@ export const projectsData = [
     url: "https://github.com/fabio-trajano/java-financial-analysis"
 },
   {
-    id: 5,
+    id: 4,
     image: Work5,
     title: "Restaurant API - Python/Django",
     linktext: "Source Code",
@@ -39,7 +39,7 @@ export const projectsData = [
     url: "https://github.com/fabio-trajano/Meta-backend-capstone-project/tree/master/MetaCapstoneProject"
   },
   {
-    id: 2,
+    id: 5,
     image: Work2,
     linktext: "Source Code",
     title: "Petbnb - Ruby on Rails",
@@ -47,7 +47,7 @@ export const projectsData = [
     url: "https://github.com/AndreNelas93/petbnb"
   },
   {
-    id: 3,
+    id: 6,
     image: Work3,
     title: "Basic Calculator - React",
     linktext: "Source Code",

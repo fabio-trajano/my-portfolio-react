@@ -11,7 +11,7 @@ const Qualification = () => {
   return (
     <section className="qualification section">
       <h2 className="section__title">Qualification</h2>
-      <span className="section__subtitle">My journey</span>
+      <span className="section__subtitle">-</span>
 
       <div className="qualification__container container">
         <div className="qualification__tabs">
@@ -48,6 +48,25 @@ const Qualification = () => {
                 : "qualification__content"
             }
           >
+            <div className="qualification__data">
+              <div></div>
+
+              <div>
+                <span className="qualification__rounder"></span>
+                <span className="qualification__line"></span>
+              </div>
+
+              <div>
+                <h3 className="qualification__title">AI Enginner Academy</h3>
+                <span className="qualification__subtitle">
+                  Rumos.pt
+                </span>
+                <div className="qualification__calender">
+                  <i className="uil uil-calendar-alt"></i> Out/24 - Ongoing
+                </div>
+              </div>
+            </div>
+
             <div className="qualification__data">
               <div>
                 <h3 className="qualification__title">Back-End Developer</h3>
@@ -136,12 +155,12 @@ const Qualification = () => {
               </div>
 
               <div>
-                <h3 className="qualification__title">Associate Backend Software Developer</h3>
+                <h3 className="qualification__title">Associate Backend Software Engineer</h3>
                 <span className="qualification__subtitle">
                   Blip.pt - Fanduel
                 </span>
                 <div className="qualification__calender">
-                  <i className="uil uil-calendar-alt"></i> Jun/24 - Ongoing
+                  <i className="uil uil-calendar-alt"></i> Jun/24 - present
                 </div>
               </div>
             </div>
