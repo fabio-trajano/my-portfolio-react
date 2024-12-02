@@ -17,7 +17,8 @@ const About = () => {
           {/* <Info /> */}
 
           <p className="about__description">
-          With a passion for technology, problem-solving, and innovation, I bring a diverse background and a unique perspective from mechanical engineering and restaurant management to software development. Specializing in backend development, I apply my skills to drive impactful solutions and contribute to innovative projects. Committed to continuous learning and growth, I thrive in fast-paced environments and am adaptable to new challenges, making me a valuable asset to any team.</p>
+          As an Associate Software Engineer at Blip | FanDuel, I enjoy solving complex problems and contributing to meaningful projects. My work focuses on backend development, where I strive to create reliable and efficient solutions that make a difference. Recently, I’ve been delving into the fields of artificial intelligence and machine learning, integrating these technologies into my current projects to drive innovation. I value continuous growth and enjoy collaborating with others to tackle new challenges and build impactful systems.
+          </p>
 
           <a download="" href={CV} className="button button--flex button__centered">
             Download my CV

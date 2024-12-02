@@ -213,7 +213,7 @@ const Services = () => {
           <div>
             <i className="uil uil-monitor services__icon"></i>
             <h3 className="services__title">
-              Front-end <br /> Development
+              Machine Learning <br /> and AI
             </h3>
           </div>
 
@@ -235,7 +235,7 @@ const Services = () => {
                 className="uil uil-times services__modal-close"
               ></i>
 
-              <h3 className="services__modal-title">Front End Development</h3>
+              <h3 className="services__modal-title">Machine Learning and Artificial Inteligence</h3>
               <p className="services__modal-description">
                 -
               </p>
@@ -244,44 +244,38 @@ const Services = () => {
                 <li className="services__modal-service">
                   <i className="uil uil-check-circle services__modal-icon"></i>
                   <p className="services__modal-info">
-                    JavaScript
+                    Numpy, Pandas
                   </p>
                 </li>
 
                 <li className="services__modal-service">
                   <i className="uil uil-check-circle services__modal-icon"></i>
                   <p className="services__modal-info">
-                    React
+                    Matplotlib, Seaborn
                   </p>
                 </li>
 
                 <li className="services__modal-service">
                   <i className="uil uil-check-circle services__modal-icon"></i>
                   <p className="services__modal-info">
-                    HTML
+                  Scikit-learn
                   </p>
                 </li>
 
                 <li className="services__modal-service">
                   <i className="uil uil-check-circle services__modal-icon"></i>
                   <p className="services__modal-info">
-                    CSS and SASS
+                    TensorFlow
                   </p>
                 </li>
 
                 <li className="services__modal-service">
                   <i className="uil uil-check-circle services__modal-icon"></i>
                   <p className="services__modal-info">
-                    Bootstrap
+                    PyTorch
                   </p>
                 </li>
 
-                <li className="services__modal-service">
-                  <i className="uil uil-check-circle services__modal-icon"></i>
-                  <p className="services__modal-info">
-                    Figma
-                  </p>
-                </li>
               </ul>
             </div>
           </div>

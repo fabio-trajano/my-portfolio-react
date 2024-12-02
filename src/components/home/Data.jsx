@@ -62,11 +62,17 @@ const Data = () => {
       <p className="home__description">
         <Typewriter
             options={{
-            strings: ["I'm based in Porto, Portugal",  ,  "I'm currently working at Blip.pt | Fanduel ", "I'm passionate about technology. ", "And I love to learn new things!"],
+            strings: [
+              "Based in Porto, Portugal 🌍",
+              "Working at Blip.pt | FanDuel 🏈 ",
+              "Exploring AI and Machine Learning 🤖",
+              "A Star Wars enthusiast and foodie 🍴",
+              "Always eager to solve problems and grow 🚀"
+            ],
             autoStart: true,
             loop: true,
-            delay: 40,
-            deleteSpeed: 30,
+            delay: 30,
+            deleteSpeed: 20,
           }}
         />
       </p>
