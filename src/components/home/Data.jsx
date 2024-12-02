@@ -63,11 +63,11 @@ const Data = () => {
         <Typewriter
             options={{
             strings: [
-              "Based in Porto, Portugal 🌍",
-              "Working at Blip.pt | FanDuel 🏈 ",
-              "Exploring AI and Machine Learning 🤖",
-              "A Star Wars enthusiast and foodie 🍴",
-              "Always eager to solve problems and grow 🚀"
+              "Based in Porto, Portugal",
+              "Working at Blip.pt | FanDuel",
+              "Exploring AI and Machine Learning",
+              "A Star Wars enthusiast and foodie",
+              "Always eager to solve problems and grow"
             ],
             autoStart: true,
             loop: true,
