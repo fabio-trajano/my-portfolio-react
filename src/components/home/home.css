@@ -59,6 +59,10 @@
   line-height: 1.5;
 }
 
+.home__description .emoji {
+  font: optional;
+}
+
 .home__img {
   background: url(../../assets//perfil.jpg);
   background-repeat: no-repeat;
