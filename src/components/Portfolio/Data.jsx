@@ -72,10 +72,10 @@ export const projectsNav = [
     name: "All",
   },
   {
-    name: "Back End",
+    name: "Backend",
   },
   {
-    name: "Machine Learning and AI",
+    name: "ML and AI",
   },
   {
     name: "Others",
