@@ -13,7 +13,7 @@ export const projectsData = [
     image: Work3,
     title: "Sports Odds Predictor - Python/ML",
     linktext: "Source Code",
-    category: "Machine Learning and AI",
+    category: "ML and AI",
     url: "https://github.com/fabio-trajano/sports-odds-predictor"
   },
   {
@@ -29,7 +29,7 @@ export const projectsData = [
     image: Work8,
     linktext: "Source Code",
     title: "Outfit Size Recommender - Python/ML",
-    category: "Machine Learning and AI",
+    category: "ML and AI",
     url: "https://github.com/fabio-trajano/outfit-size-finder"
  },
   {
@@ -37,7 +37,7 @@ export const projectsData = [
      image: Work6,
      linktext: "Source Code",
      title: "Chess Backend - Java/SpringBoot",
-     category: "Back End",
+     category: "Backend",
      url: "https://github.com/fabio-trajano/chess-java"
   },
   {
@@ -45,7 +45,7 @@ export const projectsData = [
     image: Work7,
     linktext: "Source Code",
     title: "Ticker Analysis - Java",
-    category: "Back End",
+    category: "Backend",
     url: "https://github.com/fabio-trajano/java-financial-analysis"
 },
   {
@@ -53,7 +53,7 @@ export const projectsData = [
     image: Work5,
     title: "Restaurant API - Python/Django",
     linktext: "Source Code",
-    category: "Back End",
+    category: "Backend",
     url: "https://github.com/fabio-trajano/Meta-backend-capstone-project/tree/master/MetaCapstoneProject"
   },
   {
