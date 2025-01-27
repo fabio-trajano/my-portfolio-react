@@ -5,6 +5,7 @@ import Work5 from "../../assets/project5.png";
 import Work6 from "../../assets/project6.png";
 import Work7 from "../../assets/project7.png";
 import Work8 from "../../assets/project8.png";
+import Work9 from "../../assets/project9.png";
 
 export const projectsData = [
 
@@ -47,9 +48,17 @@ export const projectsData = [
     title: "Ticker Analysis - Java",
     category: "Backend",
     url: "https://github.com/fabio-trajano/java-financial-analysis"
-},
+  },
   {
     id: 6,
+    image: Work9,
+    linktext: "Source Code",
+    title: "Simple AI Music Generator - Python",
+    category: "ML and AI",
+    url: "https://github.com/fabio-trajano/simple-music-gen-ai.git"
+  },
+  {
+    id: 7,
     image: Work5,
     title: "Restaurant API - Python/Django",
     linktext: "Source Code",
@@ -57,7 +66,7 @@ export const projectsData = [
     url: "https://github.com/fabio-trajano/Meta-backend-capstone-project/tree/master/MetaCapstoneProject"
   },
   {
-    id: 7,
+    id: 8,
     image: Work2,
     linktext: "Source Code",
     title: "Petbnb RubyOnRails",
