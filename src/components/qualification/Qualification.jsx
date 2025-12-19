@@ -203,10 +203,10 @@ const Qualification = () => {
 
             <div className="qualification__data">
               <div>
-                <h3 className="qualification__title">Restaurant Managing Partner</h3>
+                <h3 className="qualification__title">Managing Partner</h3>
                 <span className="qualification__subtitle">ILB Restaurant</span>
                 <div className="qualification__calender">
-                  <i className="uil uil-calendar-alt"></i> 2015 - 2018
+                  <i className="uil uil-calendar-alt"></i> 2015 - 2019
                 </div>
               </div>
 

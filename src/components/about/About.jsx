@@ -17,7 +17,7 @@ const About = () => {
           {/* <Info /> */}
 
           <p className="about__description">
-          As an Associate Software Engineer at Blip | FanDuel, I enjoy solving complex problems and contributing to meaningful projects. My work focuses on backend development, where I strive to create reliable and efficient solutions that make a difference. Recently, I’ve been delving into the fields of artificial intelligence and machine learning, integrating these technologies into my current projects to drive innovation. I value continuous growth and enjoy collaborating with others to tackle new challenges and build impactful systems.
+              As a Software Engineer at Blip | FanDuel, I enjoy solving complex problems and contributing to impactful, real-world projects. My work is focused on backend development, where I build reliable, scalable, and efficient systems. Recently, I’ve been exploring artificial intelligence and machine learning, integrating these technologies into my projects to drive innovation. I value continuous learning and enjoy collaborating with others to tackle new challenges and create meaningful solutions.
           </p>
 
           <a download="" href={CV} className="button button--flex button__centered">
