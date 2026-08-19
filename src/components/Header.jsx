@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./header.css";
 
 const Header = () => {
@@ -11,8 +11,17 @@ const Header = () => {
 
   const [Toggle, showMenu] = useState(false);
   const [activeNav, setActiveNav] = useState("#home");
+  const [darkTheme, setDarkTheme] = useState(
+    () => localStorage.getItem("selected-theme") === "dark"
+  );
+
+  useEffect(() => {
+    document.body.classList.toggle("dark-theme", darkTheme);
+    localStorage.setItem("selected-theme", darkTheme ? "dark" : "light");
+  }, [darkTheme]);
 
   return (
+    <>
     <header className="header">
       <nav className="nav container">
         <a href="index.html" className="nav__logo"> Fábio Trajano Ramalho</a>
@@ -106,11 +115,34 @@ const Header = () => {
           ></i>
         </div>
 
-        <div className="nav__toggle" onClick={() => showMenu(!Toggle)}>
-          <i className="uil uil-apps"></i>
+        <div className="nav__btns">
+          <i
+            className={
+              darkTheme
+                ? "uil uil-sun change-theme"
+                : "uil uil-moon change-theme"
+            }
+            onClick={() => setDarkTheme(!darkTheme)}
+            title="Toggle dark mode"
+          ></i>
+
+          <div className="nav__toggle" onClick={() => showMenu(!Toggle)}>
+            <i className="uil uil-apps"></i>
+          </div>
         </div>
       </nav>
     </header>
+
+      <i
+        className={
+          darkTheme
+            ? "uil uil-sun theme-fab"
+            : "uil uil-moon theme-fab"
+        }
+        onClick={() => setDarkTheme(!darkTheme)}
+        title="Toggle dark mode"
+      ></i>
+    </>
   );
 };
 

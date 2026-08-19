@@ -57,12 +57,12 @@ const Qualification = () => {
               </div>
 
               <div>
-                <h3 className="qualification__title">AI Enginner Academy</h3>
+                <h3 className="qualification__title">AI Engineer Academy</h3>
                 <span className="qualification__subtitle">
                   Rumos.pt
                 </span>
                 <div className="qualification__calender">
-                  <i className="uil uil-calendar-alt"></i> Out/24 - Ongoing
+                  <i className="uil uil-calendar-alt"></i> Out/24 - Apr/25
                 </div>
               </div>
             </div>
@@ -155,17 +155,41 @@ const Qualification = () => {
               </div>
 
               <div>
-                <h3 className="qualification__title">Associate Backend Software Engineer</h3>
+                <h3 className="qualification__title">Software Engineer</h3>
                 <span className="qualification__subtitle">
                   Blip.pt - Fanduel
                 </span>
                 <div className="qualification__calender">
-                  <i className="uil uil-calendar-alt"></i> Jun/24 - present
+                  <i className="uil uil-calendar-alt"></i> Nov/25 - present
                 </div>
               </div>
             </div>
 
             <div className="qualification__data">
+              <div>
+                <h3 className="qualification__title">Associate Backend Software Engineer</h3>
+                <span className="qualification__subtitle">
+                  Blip.pt - Fanduel
+                </span>
+                <div className="qualification__calender">
+                  <i className="uil uil-calendar-alt"></i> Jun/24 - Nov/25
+                </div>
+              </div>
+
+              <div>
+                <span className="qualification__rounder"></span>
+                <span className="qualification__line"></span>
+              </div>
+            </div>
+
+            <div className="qualification__data">
+              <div></div>
+
+              <div>
+                <span className="qualification__rounder"></span>
+                <span className="qualification__line"></span>
+              </div>
+
               <div>
                 <h3 className="qualification__title">Backend Software Developer Intern</h3>
                 <span className="qualification__subtitle">
@@ -175,21 +199,9 @@ const Qualification = () => {
                   <i className="uil uil-calendar-alt"></i> Sept/23 - May/24
                 </div>
               </div>
-
-              <div>
-                <span className="qualification__rounder"></span>
-                <span className="qualification__line"></span>
-              </div>
             </div>
 
             <div className="qualification__data">
-              <div></div>
-
-              <div>
-                <span className="qualification__rounder"></span>
-                <span className="qualification__line"></span>
-              </div>
-
               <div>
                 <h3 className="qualification__title">Web Developer</h3>
                 <span className="qualification__subtitle">
@@ -199,16 +211,6 @@ const Qualification = () => {
                   <i className="uil uil-calendar-alt"></i> 2023 - 2024
                 </div>
               </div>
-            </div>
-
-            <div className="qualification__data">
-              <div>
-                <h3 className="qualification__title">Managing Partner</h3>
-                <span className="qualification__subtitle">ILB Restaurant</span>
-                <div className="qualification__calender">
-                  <i className="uil uil-calendar-alt"></i> 2015 - 2019
-                </div>
-              </div>
 
               <div>
                 <span className="qualification__rounder"></span>
@@ -225,15 +227,37 @@ const Qualification = () => {
               </div>
 
               <div>
+                <h3 className="qualification__title">Managing Partner</h3>
+                <span className="qualification__subtitle">ILB Restaurant</span>
+                <div className="qualification__calender">
+                  <i className="uil uil-calendar-alt"></i> 2015 - 2019
+                </div>
+              </div>
+            </div>
+
+            <div className="qualification__data">
+              <div>
                 <h3 className="qualification__title">Research Assistant</h3>
                 <span className="qualification__subtitle">Sinton Microfluidics at University of Toronto </span>
                 <div className="qualification__calender">
                   <i className="uil uil-calendar-alt"></i> 2013
                 </div>
               </div>
+
+              <div>
+                <span className="qualification__rounder"></span>
+                <span className="qualification__line"></span>
+              </div>
             </div>
 
             <div className="qualification__data">
+              <div></div>
+
+              <div>
+                <span className="qualification__rounder"></span>
+                {/* <span className="qualification__line"></span> */}
+              </div>
+
               <div>
                 <h3 className="qualification__title">Project Manager Intern</h3>
                 <span className="qualification__subtitle">Armtec Robotics</span>
@@ -241,16 +265,11 @@ const Qualification = () => {
                   <i className="uil uil-calendar-alt"></i> 2010 - 2012
                 </div>
               </div>
-
-              <div>
-                <span className="qualification__rounder"></span>
-                {/* <span className="qualification__line"></span> */}
-              </div>
             </div>
 
 
           </div>
-          <span className="moreinfo__section">* More info about my experience and trainnings on my <a href="https://www.linkedin.com/in/fabio-trajano/" target="_blank">Linkedin</a></span>
+          <span className="moreinfo__section">* More info about my experience and trainings on my <a href="https://www.linkedin.com/in/fabio-trajano/" target="_blank" rel="noopener noreferrer">Linkedin</a></span>
         </div>
       </div>
     </section>
