@@ -1,0 +1,255 @@
+/* Launcher — sits inline with the social icons */
+.arcade-launch {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  opacity: 0.45;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.arcade-launch:hover {
+  opacity: 1;
+  transform: translateY(-2px) rotate(-8deg);
+}
+
+/* Overlay + modal shell */
+.game-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: hsla(0, 0%, 0%, 0.6);
+  backdrop-filter: blur(3px);
+}
+
+.game-modal {
+  background-color: var(--container-color);
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 8px 30px hsla(0, 0%, 0%, 0.3);
+}
+
+.game-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.9rem;
+}
+
+.game-title {
+  flex: 1;
+  text-align: center;
+  color: var(--title-color);
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-semi-bold);
+}
+
+.game-icon-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.4rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  color: var(--text-color);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s;
+}
+
+.game-icon-btn:hover {
+  color: var(--title-color-dark);
+}
+
+.game-icon-spacer {
+  cursor: default;
+}
+
+/* Shared action button */
+.game-btn {
+  border: none;
+  cursor: pointer;
+  background-color: var(--title-color);
+  color: var(--container-color);
+  padding: 0.6rem 1.4rem;
+  border-radius: 0.6rem;
+  font-weight: var(--font-medium);
+  font-size: var(--normal-font-size);
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+.game-btn:hover {
+  transform: scale(1.05);
+  background-color: var(--title-color-dark);
+}
+
+/* Arcade menu */
+.arcade-menu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.75rem;
+}
+
+.arcade-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 1.25rem 0.75rem;
+  border: 2px solid transparent;
+  border-radius: 0.9rem;
+  background-color: var(--body-color);
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.3s;
+}
+
+.arcade-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--title-color);
+}
+
+.arcade-card-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.arcade-card-label {
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+  font-size: var(--normal-font-size);
+}
+
+.arcade-card-tag {
+  color: var(--text-color);
+  font-size: var(--smaller-font-size);
+  text-align: center;
+}
+
+/* ---------- Snake ---------- */
+.snake-scores {
+  display: flex;
+  justify-content: space-between;
+  color: var(--text-color);
+  font-size: var(--small-font-size);
+  font-weight: var(--font-medium);
+  margin-bottom: 0.75rem;
+}
+
+.snake-board {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.snake-board canvas {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.75rem;
+  display: block;
+  box-sizing: border-box;
+  border: 3px solid var(--title-color);
+  touch-action: none;
+}
+
+.snake-splash {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: hsla(0, 0%, 0%, 0.45);
+  border-radius: 0.75rem;
+  text-align: center;
+}
+
+.snake-splash-title {
+  color: #fff;
+  font-size: var(--h2-font-size);
+  font-weight: var(--font-semi-bold);
+}
+
+.snake-splash-sub {
+  color: hsl(0, 0%, 85%);
+  font-size: var(--normal-font-size);
+}
+
+.snake-hint {
+  margin-top: 0.9rem;
+  color: var(--text-color);
+  font-size: var(--smaller-font-size);
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* ---------- Tic-Tac-Toe ---------- */
+.ttt-status {
+  text-align: center;
+  color: var(--title-color);
+  font-weight: var(--font-medium);
+  font-size: var(--normal-font-size);
+  margin-bottom: 1rem;
+}
+
+.ttt-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto 1.25rem;
+}
+
+.ttt-cell {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  line-height: 1;
+  border: none;
+  border-radius: 0.6rem;
+  background-color: var(--body-color);
+  color: var(--title-color);
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.15s;
+}
+
+.ttt-cell:not(:disabled):hover {
+  transform: scale(1.04);
+  background-color: var(--container-color);
+  box-shadow: inset 0 0 0 2px var(--title-color);
+}
+
+.ttt-cell-win {
+  background-color: var(--title-color);
+  color: var(--container-color);
+}
+
+.ttt-x {
+  color: #e74c3c;
+}
+
+.ttt-o {
+  color: #3498db;
+}
+
+.ttt-cell-win .ttt-x,
+.ttt-cell-win .ttt-o {
+  color: var(--container-color);
+}
+
+/* Center the shared button under Tic-Tac-Toe */
+.ttt-board + .game-btn {
+  display: block;
+  margin: 0 auto;
+}

@@ -9,6 +9,7 @@ import Work from './components/Portfolio/Work';
 import Contact from './components/contact/Contact';
 import ScrollUp from './components/scrollup/ScrollUp';
 import Qualification from './components/qualification/Qualification';
+import EasterEggs from './components/easteregg/EasterEggs';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
       <ScrollUp/>
       <Contact />
      </main>
+     <EasterEggs />
     </>
   );
 }
