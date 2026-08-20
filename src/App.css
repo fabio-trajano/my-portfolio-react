@@ -76,6 +76,27 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Scroll reveal — added by JS, so content stays visible without JS */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.reveal-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal.reveal-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 body, button, input, textarea {
   font-family: var(--body-font);
   font-size: var(--normal-font-size);

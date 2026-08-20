@@ -20,6 +20,25 @@ const Header = () => {
     localStorage.setItem("selected-theme", darkTheme ? "dark" : "light");
   }, [darkTheme]);
 
+  // Scroll-spy: highlight the nav link for the section currently in view.
+  useEffect(() => {
+    const ids = ["home", "about", "services", "portfolio", "contact"];
+    const sections = ids
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+    if (!sections.length) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveNav(`#${entry.target.id}`);
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px" }
+    );
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
     <header className="header">
