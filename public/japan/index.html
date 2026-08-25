@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>日本 · Japão — 16 noites · 2–18 março 2027</title>
+<meta name="description" content="Roteiro visual e interativo de 16 noites no Japão (2–18 mar 2027) — Tóquio, Kawaguchiko, Kyoto e Osaka. Viagem solo." />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="日本 · Japão — 16 noites (2–18 mar 2027)" />
+<meta property="og:description" content="Roteiro visual e interativo: Tóquio · Kawaguchiko · Kyoto · Osaka." />
+<meta property="og:url" content="https://www.fabiotrajano.com/japan/" />
+<meta name="theme-color" content="#e9b7bf" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Yuji+Syuku&family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+<style>
+:root{
+  --paper:#fbf6ec;--paper-2:#f4ecdb;--ink:#33302b;--ink-soft:#6b6459;
+  --sakura:#e9a7b3;--sakura-deep:#d97f92;--matcha:#7fa66a;--matcha-deep:#5c8450;
+  --sky:#9fc7de;--sky-deep:#6ba7c9;--indigo:#3b4a6b;--sunset:#efa06b;
+  --gold:#e7c24d;--poke-red:#e15a54;
+  --shadow:0 10px 30px -12px rgba(59,74,107,.35);--radius:20px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;font-family:"Zen Maru Gothic",system-ui,sans-serif;color:var(--ink);
+  background:
+    radial-gradient(1200px 600px at 80% -10%, #fff 0%, transparent 60%),
+    radial-gradient(900px 500px at -10% 20%, #eaf3f6 0%, transparent 55%),
+    linear-gradient(180deg,#fdfaf3 0%, var(--paper) 40%, var(--paper-2) 100%);
+  line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+a{color:var(--sky-deep);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3{font-family:"Shippori Mincho",serif;line-height:1.2;font-weight:800}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+.kanji{font-family:"Yuji Syuku",serif}
+
+/* NAV */
+nav.top{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:rgba(251,246,236,.82);border-bottom:1px solid rgba(59,74,107,.12)}
+nav.top .wrap{display:flex;gap:6px;align-items:center;overflow-x:auto;padding:10px 20px;scrollbar-width:none}
+nav.top .wrap::-webkit-scrollbar{display:none}
+nav.top .brand{font-family:"Yuji Syuku",serif;font-size:1.15rem;color:var(--indigo);margin-right:8px;white-space:nowrap}
+nav.top a{white-space:nowrap;color:var(--ink-soft);font-weight:500;font-size:.9rem;padding:6px 12px;border-radius:999px;transition:.2s}
+nav.top a:hover{background:var(--paper-2);color:var(--ink);text-decoration:none}
+
+/* HERO */
+header.hero{position:relative;overflow:hidden;padding:70px 0 40px;text-align:center}
+.hero .sky-svg{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.hero .wrap{position:relative;z-index:2}
+.hero .eyebrow{display:inline-flex;gap:10px;align-items:center;font-family:"Yuji Syuku",serif;letter-spacing:.15em;color:var(--indigo);background:rgba(255,255,255,.6);border:1px solid rgba(59,74,107,.15);padding:6px 16px;border-radius:999px;font-size:.85rem}
+.hero h1{font-size:clamp(2.2rem,7vw,4.6rem);margin:18px 0 6px;color:var(--indigo);letter-spacing:.02em}
+.hero h1 .jp{display:block;font-family:"Yuji Syuku",serif;color:var(--sakura-deep);font-size:.55em;letter-spacing:.3em;margin-bottom:4px}
+.hero p.lead{max-width:640px;margin:0 auto;color:var(--ink-soft);font-size:1.08rem}
+.hero .stats{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:26px}
+.stat{background:rgba(255,255,255,.72);border:1px solid rgba(59,74,107,.12);border-radius:16px;padding:12px 18px;min-width:110px;box-shadow:var(--shadow)}
+.stat b{display:block;font-family:"Shippori Mincho",serif;font-size:1.5rem;color:var(--indigo)}
+.stat span{font-size:.8rem;color:var(--ink-soft)}
+.petals{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.petal{position:absolute;top:-24px;font-size:18px;opacity:.8;animation:fall linear infinite}
+@keyframes fall{0%{transform:translateY(-40px) rotate(0);opacity:0}10%{opacity:.9}100%{transform:translateY(105vh) translateX(40px) rotate(360deg);opacity:.2}}
+@media(prefers-reduced-motion:reduce){.petal{display:none}}
+
+/* SECTIONS */
+section{padding:44px 0}
+.sec-head{display:flex;align-items:center;gap:14px;margin-bottom:8px}
+.sec-head .dot{width:42px;height:42px;border-radius:50%;flex:0 0 auto;display:grid;place-items:center;font-size:1.3rem;background:var(--paper-2);border:2px solid rgba(59,74,107,.15)}
+.sec-head h2{font-size:clamp(1.4rem,4vw,2.1rem);color:var(--indigo);margin:0}
+.sec-head small{display:block;font-family:"Yuji Syuku",serif;color:var(--sakura-deep);letter-spacing:.2em;font-size:.75rem}
+.sec-intro{color:var(--ink-soft);margin:0 0 22px;max-width:760px}
+
+/* CARDS / GRID */
+.grid{display:grid;gap:16px}
+.grid.cols-2{grid-template-columns:repeat(2,1fr)}
+.grid.cols-3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:820px){.grid.cols-3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.grid.cols-2,.grid.cols-3{grid-template-columns:1fr}}
+.card{background:rgba(255,255,255,.78);border:1px solid rgba(59,74,107,.1);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);transition:.2s}
+.card:hover{transform:translateY(-3px)}
+.card h3{margin:0 0 4px;font-size:1.05rem;color:var(--indigo)}
+.card .meta{font-size:.85rem;color:var(--ink-soft)}
+.card ul{margin:8px 0 0;padding-left:18px;font-size:.88rem;color:var(--ink-soft)}
+.card ul li{margin-bottom:5px}
+.tag{display:inline-block;font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--paper-2);color:var(--ink-soft);margin:2px 4px 2px 0}
+.tag.food{background:#f6e2d4;color:#b5652f}
+.tag.poke{background:#f8dcda;color:var(--poke-red)}
+.tag.zen{background:#e4efdc;color:var(--matcha-deep)}
+.tag.book{background:#e7ecf7;color:var(--indigo)}
+.tag.sumo{background:#f3ddb2;color:#8a5a17}
+
+/* BOOKING CHECKLIST */
+.book-item{display:flex;gap:14px;align-items:flex-start}
+.book-item input{margin-top:5px;width:20px;height:20px;accent-color:var(--poke-red);flex:0 0 auto;cursor:pointer}
+.book-item.done label{opacity:.5;text-decoration:line-through}
+.book-item .when{font-size:.78rem;color:var(--poke-red);font-weight:700}
+
+/* SIMPLE CHECKLIST */
+ul.checklist{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+ul.checklist li{background:rgba(255,255,255,.78);border:1px solid rgba(59,74,107,.1);border-radius:14px;padding:12px 16px;box-shadow:var(--shadow);font-size:.92rem}
+ul.checklist li b{color:var(--indigo)}
+
+/* MAP */
+#map{height:460px;border-radius:var(--radius);border:1px solid rgba(59,74,107,.15);box-shadow:var(--shadow);z-index:1}
+.map-legend{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px;font-size:.85rem;color:var(--ink-soft)}
+.map-legend span{display:inline-flex;align-items:center;gap:6px}
+.map-legend i{width:12px;height:12px;border-radius:50%;display:inline-block}
+.leaflet-popup-content{font-family:"Zen Maru Gothic",sans-serif}
+
+/* CITY BANDS + DAYS */
+.city-band{display:flex;align-items:center;gap:16px;margin:34px 0 18px;padding:14px 20px;border-radius:var(--radius);color:#fff;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.city-band .big{font-family:"Yuji Syuku",serif;font-size:1.9rem;opacity:.9}
+.city-band h3{margin:0;font-size:1.35rem;color:#fff}
+.city-band .sub{font-size:.85rem;opacity:.92}
+.city-band .nights{margin-left:auto;background:rgba(255,255,255,.22);padding:6px 14px;border-radius:999px;font-weight:700;white-space:nowrap}
+.band-tokyo{background:linear-gradient(120deg,var(--indigo),#5a6ea0)}
+.band-fuji{background:linear-gradient(120deg,var(--sky-deep),#8fbcd6)}
+.band-kyoto{background:linear-gradient(120deg,var(--matcha-deep),#8aad6f)}
+.band-osaka{background:linear-gradient(120deg,var(--sunset),#e2795a)}
+
+details.day{background:rgba(255,255,255,.8);border:1px solid rgba(59,74,107,.1);border-radius:16px;margin-bottom:12px;box-shadow:var(--shadow);overflow:hidden}
+details.day>summary{list-style:none;cursor:pointer;padding:16px 20px;display:flex;gap:14px;align-items:center}
+details.day>summary::-webkit-details-marker{display:none}
+.day-num{flex:0 0 auto;width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-family:"Shippori Mincho",serif;font-weight:800;color:#fff;background:var(--indigo);font-size:.95rem;line-height:1;text-align:center}
+.day-num small{display:block;font-size:.5rem;font-weight:500;opacity:.9;font-family:"Zen Maru Gothic"}
+.day-title{flex:1;min-width:0}
+.day-title b{display:block;color:var(--indigo);font-size:1.05rem}
+.day-title span{font-size:.85rem;color:var(--ink-soft)}
+.chev{transition:.25s;color:var(--ink-soft);font-size:1.4rem}
+details.day[open] .chev{transform:rotate(90deg)}
+.day-body{padding:0 20px 20px 20px}
+.stop{display:flex;gap:12px;padding:11px 0;border-top:1px dashed rgba(59,74,107,.18)}
+.stop .time{flex:0 0 auto;font-family:"Shippori Mincho",serif;font-weight:700;color:var(--sakura-deep);min-width:52px;font-size:.9rem}
+.stop .what b{color:var(--ink)}
+.stop .what p{margin:2px 0 0;font-size:.9rem;color:var(--ink-soft)}
+.stop .what a.map{display:inline-flex;align-items:center;gap:4px;font-size:.8rem;font-weight:700;color:var(--poke-red);margin-top:4px;margin-right:10px}
+.note{background:#fff8e6;border:1px solid #f0dfa6;border-left:4px solid var(--gold);border-radius:12px;padding:12px 16px;margin:14px 0;font-size:.9rem;color:#7a6a2f}
+.note.tip{background:#eef6ea;border-color:#c7e0ba;border-left-color:var(--matcha);color:#4f6b41}
+.note.sumo{background:#fbe7e6;border-color:#f2b8b4;border-left-color:var(--poke-red);color:#9c3b36}
+
+/* TABLES */
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:16px}
+.tbl{width:100%;border-collapse:collapse;overflow:hidden;border-radius:16px;box-shadow:var(--shadow)}
+.tbl th,.tbl td{padding:12px 14px;text-align:left;font-size:.9rem;border-bottom:1px solid rgba(59,74,107,.1);background:rgba(255,255,255,.8)}
+.tbl th{background:var(--indigo);color:#fff;font-family:"Shippori Mincho",serif}
+.tbl tr:last-child td{border-bottom:none}
+@media(max-width:560px){.tbl{font-size:.82rem}.tbl th,.tbl td{padding:9px 10px;white-space:nowrap}}
+
+/* MOBILE HARDENING */
+@media(max-width:640px){
+  .wrap{padding:0 16px}
+  section{padding:34px 0}
+  header.hero{padding:52px 0 30px}
+  .hero .stats{gap:10px}
+  .stat{min-width:0;flex:1 1 40%;padding:10px 12px}
+  .stat b{font-size:1.25rem}
+  .sec-head .dot{width:36px;height:36px;font-size:1.1rem}
+  .city-band{flex-wrap:wrap;gap:10px 12px;padding:14px 16px}
+  .city-band .big{font-size:1.5rem}
+  .city-band h3{font-size:1.15rem}
+  .city-band .nights{margin-left:auto;font-size:.8rem;padding:5px 12px}
+  details.day>summary{padding:14px 14px;gap:11px}
+  .day-num{width:48px;height:48px}
+  .day-body{padding:0 14px 16px 14px}
+  .stop .time{min-width:46px;font-size:.85rem}
+  #map{height:60vh;max-height:420px}
+}
+html,body{max-width:100%;overflow-x:hidden}
+
+/* SCATTERED POKÉMON (decorative, scroll-reveal) */
+main{position:relative}
+main section{position:relative}
+.pkm-wrap{position:absolute;opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease;pointer-events:none;z-index:3;will-change:opacity,transform}
+.pkm-wrap.in{opacity:.95;transform:translateY(0)}
+.pkm-wrap img{display:block;width:clamp(52px,8vw,92px);filter:drop-shadow(0 10px 14px rgba(59,74,107,.28));animation:floaty 6s ease-in-out infinite}
+.pkm-wrap.flip img{transform:scaleX(-1)}
+.pkm-wrap.sm img{width:clamp(40px,6vw,66px)}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-12px) rotate(4deg)}}
+@media(prefers-reduced-motion:reduce){.pkm-wrap img{animation:none}.pkm-wrap{transition:none}}
+/* keep them off the reading column on small screens */
+@media(max-width:560px){.pkm-wrap img{width:46px}.pkm-wrap.hide-sm{display:none}}
+
+footer{padding:50px 0 70px;text-align:center;color:var(--ink-soft)}
+footer .fuji-line{font-family:"Yuji Syuku",serif;font-size:1.4rem;color:var(--indigo);letter-spacing:.3em;margin-bottom:8px}
+.backhome{display:inline-block;margin-top:14px;background:var(--indigo);color:#fff;padding:10px 22px;border-radius:999px;font-weight:700}
+.backhome:hover{background:#2c3a57;text-decoration:none}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="top"><div class="wrap">
+  <span class="brand">日本</span>
+  <a href="#reservas">⏰ Reservas</a>
+  <a href="#voo">✈️ Voo</a>
+  <a href="#bagagem">🧳 Bagagem</a>
+  <a href="#dormidas">🛏️ Dormidas</a>
+  <a href="#mapa">🗺️ Mapa</a>
+  <a href="#tokyo">Tóquio</a>
+  <a href="#fuji">Fuji</a>
+  <a href="#kyoto">Kyoto</a>
+  <a href="#osaka">Osaka</a>
+  <a href="#comida">🍣 Comida</a>
+  <a href="#fotos">📸 Fotos</a>
+  <a href="#checklist">✅ Checklist</a>
+</div></nav>
+
+<!-- HERO -->
+<header class="hero">
+  <svg class="sky-svg" viewBox="0 0 1440 520" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <linearGradient id="skyG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfe6f0"/><stop offset="1" stop-color="#fbeef0"/></linearGradient>
+      <linearGradient id="fujiG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7fa2c4"/><stop offset="1" stop-color="#aac4dc"/></linearGradient>
+    </defs>
+    <rect width="1440" height="520" fill="url(#skyG)"/>
+    <circle cx="1120" cy="150" r="70" fill="#f6c9cf" opacity=".85"/>
+    <path d="M0 430 Q 250 360 500 420 T 1000 410 T 1440 420 V520 H0 Z" fill="#bcd7cf" opacity=".55"/>
+    <path d="M470 470 L 700 205 Q 720 190 740 205 L 970 470 Z" fill="url(#fujiG)"/>
+    <path d="M636 300 L700 240 Q720 222 740 240 L804 300 Q760 285 720 300 Q680 315 636 300 Z" fill="#fff" opacity=".95"/>
+    <path d="M0 470 H1440 V520 H0 Z" fill="#e9dcc4" opacity=".7"/>
+  </svg>
+  <div class="petals" id="petals"></div>
+  <div class="wrap">
+    <span class="eyebrow">🌸 Viagem solo · 2–18 março 2027</span>
+    <h1><span class="jp kanji">にほん</span>Japão — 16 noites</h1>
+    <p class="lead">Entra por <b>Narita</b> (Skyliner até Ueno), sai por <b>Kansai/KIX</b> — voo open-jaw.
+       Dormir barato em boas cápsulas, esbanjar em comida, um único grande luxo: o ryokan com vista Fuji.</p>
+    <div class="stats">
+      <div class="stat"><b>16</b><span>noites</span></div>
+      <div class="stat"><b>4</b><span>bases</span></div>
+      <div class="stat"><b>17</b><span>dias</span></div>
+      <div class="stat"><b>1</b><span>ryokan onsen</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- Pokémon espalhados (decorativos, aparecem ao fazer scroll) -->
+<div class="pkm-wrap sm" style="top:40px;right:3%" data-float><img src="/japan/img/pokebola.png" alt="" aria-hidden="true" loading="lazy"></div>
+
+<!-- RESERVAS -->
+<section id="reservas"><div class="wrap">
+  <div class="sec-head"><div class="dot">⏰</div><div><small class="kanji">よやく · reservas</small><h2>Reservar com antecedência</h2></div></div>
+  <p class="sec-intro">Por ordem de prazo. Marcar à medida que fica reservado (guardado localmente no navegador).</p>
+  <div class="grid cols-2" id="bookingList"></div>
+</div></section>
+
+<!-- VOO -->
+<section id="voo"><div class="wrap">
+  <div class="sec-head"><div class="dot">✈️</div><div><small class="kanji">ひこうき · voo</small><h2>O voo</h2></div></div>
+  <div class="grid cols-2">
+    <div class="card"><h3>🛫 Ida — seg 1 mar</h3><p class="meta">Porto <b>12:55</b> → Bruxelas (escala 2h20) → <b>ANA</b> Boeing 787 → <b>Narita 16:10</b> (ter 2 mar). Perna longa em ANA (787, espaço acima da média).</p></div>
+    <div class="card"><h3>🛬 Volta — qui 18 mar</h3><p class="meta">Osaka/<b>KIX</b> → <b>Lufthansa</b> via Munique → Porto. Confirmar os horários exatos da volta (18 mar) na reserva — podem diferir da opção de dia 21.</p></div>
+    <div class="card"><h3>🧳 Bagagem</h3><p class="meta">1 de mão + 1 despachada incluídas (ANA/Lufthansa, Star Alliance).</p></div>
+    <div class="card"><h3>🚄 Narita → Ueno</h3><p class="meta">Chegada a Narita, não Haneda — o <b>Keisei Skyliner</b> vai direto a Ueno em ~45 min (~¥2.570), cómodo para a base em Ueno.</p><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Keisei+Skyliner+Ueno">📍 Google Maps</a></div>
+  </div>
+  <div class="note tip">💡 Quinta-feira é, em média, o dia mais barato para voar Porto–Japão.</div>
+</div></section>
+
+<!-- BAGAGEM -->
+<section id="bagagem"><div class="wrap">
+  <div class="sec-head"><div class="dot">🧳</div><div><small class="kanji">にもつ · bagagem &amp; conforto</small><h2>Bagagem &amp; conforto no voo</h2></div></div>
+  <p class="sec-intro">Mala <b>MÉDIA</b> despachada + mochila de cabine. Nem só de mão (não cabem as compras), nem gigante.</p>
+  <div class="grid cols-2">
+    <div class="card"><h3>📦 A mala certa</h3>
+      <ul>
+        <li>Malas &gt;160 cm (soma das 3 dimensões) obrigam a lugar "oversized" no Shinkansen — mala média evita isso.</li>
+        <li>Meio vazia à ida + um <b>duffel dobrável</b> lá dentro; à volta enchem-se as duas.</li>
+        <li>Excesso de compras: 2.ª mala barata na Don Quijote + bagagem extra (~€100–200) — mais barato que correio.</li>
+        <li>Tax-free: sacos selados até à saída do Japão. Limite ~23 kg — pesar antes.</li>
+      </ul></div>
+    <div class="card"><h3>🛋️ Conforto (17–20h porta-a-porta)</h3>
+      <ul>
+        <li>Lugar de <b>corredor</b> (voo solo e longo, mais fácil levantar).</li>
+        <li>Meias de compressão, almofada de pescoço, máscara + tampões, garrafa vazia para encher depois do controlo.</li>
+        <li>De pé a cada 2–3h, hidratar, moderar o álcool.</li>
+        <li>Premium economy custa quase o dobro — com a comida como prioridade, económica bem preparada e o dinheiro nos omakase.</li>
+        <li><b>Jet lag (+9h):</b> manter-se acordado até à noite local. O Dia 1 leve serve para isso.</li>
+      </ul></div>
+  </div>
+</div></section>
+
+<!-- DORMIDAS -->
+<section id="dormidas"><div class="pkm-wrap hide-sm" style="top:30px;left:2%" data-float><img src="/japan/img/eevee.png" alt="" aria-hidden="true" loading="lazy"></div><div class="wrap">
+  <div class="sec-head"><div class="dot">🛏️</div><div><small class="kanji">やど · dormidas</small><h2>Dormidas (solo)</h2></div></div>
+  <p class="sec-intro">Cápsulas <b>premium</b> na maioria das noites, ryokan como único grande luxo. Marcas boas: <a href="https://ninehours.co.jp/en/" target="_blank" rel="noopener">Nine Hours (9h)</a>, The Millennials, GLANSIT, The Prime Pod, BAY HOTEL.</p>
+  <div class="table-scroll"><table class="tbl">
+    <thead><tr><th>Cidade</th><th>Noites</th><th>Recomendação</th><th>Custo/noite</th></tr></thead>
+    <tbody>
+      <tr><td>Tóquio</td><td>7</td><td>Cápsula premium (Ueno/Asakusa/Akihabara)</td><td>¥4.000–7.000</td></tr>
+      <tr><td>Kawaguchiko</td><td>2</td><td>Ryokan c/ rotenburo privado + Fuji <span class="tag zen">o esbanjo</span></td><td>linha grande</td></tr>
+      <tr><td>Kyoto</td><td>4</td><td>Cápsula (Kawaramachi/Gion); 1 noite de conforto opcional</td><td>¥4.000–7.000</td></tr>
+      <tr><td>Osaka</td><td>3</td><td>Cápsula perto de Namba/Dotonbori</td><td>¥3.500–6.500</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note tip">💡 O banho privado do ryokan resolve privacidade + tatuagem. Mala grande não entra no pod (só cacifo) → takkyubin essencial. Algumas cápsulas obrigam a sair a meio do dia para limpeza; levar tampões. Muitas são só-homens / pisos separados — ampla oferta para viajante solo.</div>
+</div></section>
+
+<!-- MAPA -->
+<section id="mapa"><div class="wrap">
+  <div class="sec-head"><div class="dot">🗺️</div><div><small class="kanji">ちず · mapa vivo</small><h2>O mapa da viagem</h2></div></div>
+  <p class="sec-intro">A rota completa e os pontos-chave. Cada marcador abre o local no Google Maps.</p>
+  <div id="map"></div>
+  <div class="map-legend">
+    <span><i style="background:#3b4a6b"></i> Bases (dormidas)</span>
+    <span><i style="background:#e15a54"></i> Pokémon / gaming</span>
+    <span><i style="background:#7fa66a"></i> Templos / natureza</span>
+    <span><i style="background:#efa06b"></i> Comida / mercados</span>
+    <span><i style="background:#6ba7c9"></i> Aeroportos</span>
+  </div>
+</div></section>
+
+<!-- TÓQUIO -->
+<section id="tokyo"><div class="pkm-wrap" style="top:24px;right:2%" data-float><img src="/japan/img/pikachu.png" alt="" aria-hidden="true" loading="lazy"></div><div class="wrap">
+  <div class="city-band band-tokyo"><span class="big kanji">東京</span><div><h3>Tóquio</h3><div class="sub">Base em Ueno · Dias 1–7 · 2–8 mar</div></div><span class="nights">7 noites</span></div>
+
+  <details class="day" open>
+    <summary><span class="day-num">D1<small>ter 2/3</small></span><span class="day-title"><b>Chegada — leve (jet lag)</b><span>Narita → Skyliner → Ueno · sem reservas hoje</span></span><span class="chev">›</span></summary>
+    <div class="day-body">
+      <div class="stop"><span class="time">Tarde</span><div class="what"><b>Narita → Skyliner → Ueno</b><p>~45 min. Check-in, passeio calmo por Ueno.</p><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Ueno+Station+Tokyo">📍 Ueno</a></div></div>
+      <div class="stop"><span class="time">Noite</span><div class="what"><b>Izakaya local perto do hotel</b><p>Jantar simples. Dormir cedo (aguentar até à noite local).</p></div></div>
+    </div>
+  </details>
+
+  <details class="day">
+    <summary><span class="day-num">D2<small>qua 3/3</small></span><span class="day-title"><b>Oeste — Shibuya + Harajuku + Shinjuku</b><span>Um salto para oeste, o dia todo lá</span></span><span class="chev">›</span></summary>
+    <div class="day-body">
+      <div class="stop"><span class="time">11:00</span><div class="what"><b>Meiji Jingu</b><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Meiji+Jingu">📍 Google Maps</a></div></div>
+      <div class="stop"><span class="time">12:30</span><div class="what"><b>Harajuku — Takeshita St.</b><p>Petiscar sem fazer disto um almoço grande.</p><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Takeshita+Street+Harajuku">📍 Google Maps</a></div></div>
+      <div class="stop"><span class="time">14:00</span><div class="what"><b>Shibuya</b> <span class="tag poke">Nintendo + Pokémon</span><p>Hachiko, o cruzamento, Center-gai, Don Quijote. No <b>Shibuya PARCO</b>: <b>Nintendo TOKYO</b> (6.º piso) + <b>Pokémon Center Shibuya</b>, mesmo edifício.</p><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Shibuya+PARCO">📍 Shibuya PARCO</a></div></div>
+      <div class="stop"><span class="time">17:00</span><div class="what"><b>Shibuya Sky</b> <span class="tag book">reserva</span><p>Pôr do sol → Tóquio iluminada.</p><a class="map" target="_blank" rel="noopener" href="https://www.shibuya-scramble-square.com/sky/en/">🎟️ Reservar</a></div></div>
+      <div class="stop"><span class="time">20:00</span><div class="what"><b>Shinjuku — Omoide Yokocho</b><p>Yakitori em tascos minúsculos, depois Golden Gai.</p><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Omoide+Yokocho+Shinjuku">📍 Google Maps</a></div></div>
+    </div>
+  </details>
+
+  <details class="day">
+    <summary><span class="day-num">D3<small>qui 4/3</small></span><span class="day-title"><b>Central — peixe + compras + Pokémon + omakase</b><span>Cluster central-sul · quase tudo a pé</span></span><span class="chev">›</span></summary>
+    <div class="day-body">
+      <div class="stop"><span class="time">08:00</span><div class="what"><b>Tsukiji Outer Market</b> <span class="tag food">food crawl</span><p>Em jejum: atum → uni → vieira → ostra → tamagoyaki → enguia → doce.</p><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Tsukiji+Outer+Market">📍 Google Maps</a></div></div>
+      <div class="stop"><span class="time">11:00</span><div class="what"><b>Ginza — depachika + Uniqlo flagship</b><p>12 andares; 11.º piso só UT (colabs anime/games só do Japão); UTme!; tax-free c/ passaporte &gt;~¥5.500.</p><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Uniqlo+Ginza+flagship">📍 Google Maps</a></div></div>
+      <div class="stop"><span class="time">14:00</span><div class="what"><b>Nihonbashi — Pokémon Center DX + Café</b> <span class="tag poke">obrigatório</span><p>Pokémon Center Tokyo DX + Pokémon Café ao lado (reserva ~31 dias antes).</p><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Pokemon+Center+Tokyo+DX+Nihonbashi">📍 Google Maps</a></div></div>
+      <div class="stop"><span class="time">18:00</span><div class="what"><b>Tokyo Station — Character Street</b><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Tokyo+Station+Character+Street">📍 Google Maps</a></div></div>
+      <div class="stop"><span class="time">20:00</span><div class="what"><b>OMAKASE</b> <span class="tag book">reservar 1–3 meses antes</span><p>O grande jantar de sushi de Tóquio.</p><a class="map" target="_blank" rel="noopener" href="https://pocket-concierge.jp/en">🎟️ Pocket Concierge</a></div></div>
+      <div class="note tip">Opção "cool e diferente": <b>teamLab Planets</b> (Toyosu), mesma zona da baía. <a href="https://www.teamlab.art/e/planets/" target="_blank" rel="noopener">Bilhetes com hora marcada</a>.</div>
+    </div>
+  </details>
+
+  <details class="day">
+    <summary><span class="day-num">D4<small>sex 5/3</small></span><span class="day-title"><b>Nordeste tradicional — Asakusa + Ueno + Ameyoko</b><span>Terreno de casa</span></span><span class="chev">›</span></summary>
+    <div class="day-body">
+      <div class="stop"><span class="time">08:00</span><div class="what"><b>Sensō-ji cedo → Nakamise</b><p>Petiscar: ningyo-yaki, melon pan, senbei, dango.</p><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Senso-ji+Temple+Asakusa">📍 Google Maps</a></div></div>
+      <div class="stop"><span class="time">12:30</span><div class="what"><b>Almoço — tempura</b><p>Passeio pelo rio Sumida (Skytree à vista).</p></div></div>
+      <div class="stop"><span class="time">15:30</span><div class="what"><b>Ueno Park</b><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Ueno+Park">📍 Google Maps</a></div></div>
+      <div class="stop"><span class="time">17:00</span><div class="what"><b>Ameyoko</b> <span class="tag food">2.º food crawl</span><p>Mercado caótico sob as linhas de comboio.</p><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Ameyoko+Market">📍 Google Maps</a></div></div>
+      <div class="stop"><span class="time">20:00</span><div class="what"><b>Izakaya em Ueno</b><p>Sashimi, karaage, yakitori, highball.</p></div></div>
+    </div>
+  </details>
+
+  <details class="day">
+    <summary><span class="day-num">D5<small>sáb 6/3</small></span><span class="day-title"><b>Otaku / Pokémon / gaming</b><span>Akihabara → Ikebukuro</span></span><span class="chev">›</span></summary>
+    <div class="day-body">
+      <div class="stop"><span class="time">09:30</span><div class="what"><b>Akihabara</b> <span class="tag poke">cartas Pokémon</span><p>Arcades, retro gaming, gachapon, lojas de cartas (singles, graded).</p><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Akihabara+Electric+Town">📍 Google Maps</a></div></div>
+      <div class="stop"><span class="time">13:00</span><div class="what"><b>Ramen mesmo bom</b><p>¥1.000–1.500 rende uma refeição fantástica.</p></div></div>
+      <div class="stop"><span class="time">15:00</span><div class="what"><b>Ikebukuro / Sunshine City</b> <span class="tag poke">o maior</span><p>Pokémon Center Mega Tokyo.</p><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Pokemon+Center+Mega+Tokyo+Sunshine+City">📍 Google Maps</a></div></div>
+      <div class="stop"><span class="time">20:00</span><div class="what"><b>Yakiniku / wagyu</b><p>Depois de tanto peixe, carne na grelha.</p></div></div>
+    </div>
+  </details>
+
+  <details class="day">
+    <summary><span class="day-num">D6<small>dom 7/3</small></span><span class="day-title"><b>Day-trip — um de dois</b><span>Kamakura (a opção mais nova) ou Hakone</span></span><span class="chev">›</span></summary>
+    <div class="day-body">
+      <div class="stop"><span class="time">(a)</span><div class="what"><b>Kamakura (~1h)</b> <span class="tag zen">recomendado</span><p>O Grande Buda de Kōtoku-in, templos, bambu de Hōkoku-ji, mar. Ótimo para fotos.</p><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Kotoku-in+Great+Buddha+Kamakura">📍 Google Maps</a></div></div>
+      <div class="stop"><span class="time">(b)</span><div class="what"><b>Hakone</b><p>Open-Air Museum + lago Ashi (barco + teleférico).</p><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Hakone+Open-Air+Museum">📍 Google Maps</a></div></div>
+      <div class="note">Com o Fuji já coberto em Kawaguchiko, <b>Kamakura</b> é a opção mais nova/diferente das duas.</div>
+    </div>
+  </details>
+
+  <details class="day">
+    <summary><span class="day-num">D7<small>seg 8/3</small></span><span class="day-title"><b>Tóquio livre (a noite extra)</b><span>Dia livre / buffer</span></span><span class="chev">›</span></summary>
+    <div class="day-body">
+      <div class="stop"><span class="time">Livre</span><div class="what"><b>Revisitar os favoritos</b><p>Pokémon/cartas, teamLab (se ficou por fazer), Yanaka Ginza / Kagurazaka para fotos, compras Uniqlo, e a comida que ficou por provar. Buffer útil caso algo escorregue dos outros dias.</p></div></div>
+    </div>
+  </details>
+</div></section>
+
+<!-- FUJI -->
+<section id="fuji"><div class="pkm-wrap hide-sm flip" style="top:20px;left:2%" data-float><img src="/japan/img/mew.png" alt="" aria-hidden="true" loading="lazy"></div><div class="wrap">
+  <div class="city-band band-fuji"><span class="big kanji">富士</span><div><h3>Kawaguchiko</h3><div class="sub">Ryokan · Fuji · Dias 8–9 · 9–10 mar</div></div><span class="nights">2 noites</span></div>
+  <div class="note">🗻 <b>Março:</b> ótima altura para o Fuji (ar seco de inverno, ~48–50% de visibilidade, melhor de manhã cedo). Antes do pico das cerejeiras e das multidões. Duas manhãs = ~95% de hipótese de vista limpa.</div>
+
+  <details class="day" open>
+    <summary><span class="day-num">D8<small>ter 9/3</small></span><span class="day-title"><b>Tóquio → Kawaguchiko</b><span>Malas grandes por takkyubin direto para Kyoto</span></span><span class="chev">›</span></summary>
+    <div class="day-body">
+      <div class="stop"><span class="time">Manhã</span><div class="what"><b>Autocarro direto (~2h)</b><p>Só o essencial de 2 noites (mochila).</p><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Kawaguchiko+Station">📍 Google Maps</a></div></div>
+      <div class="stop"><span class="time">Tarde</span><div class="what"><b>Check-in ryokan + Lago Kawaguchiko</b><p>Oishi Park, teleférico Kachi-Kachi.</p><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Oishi+Park+Kawaguchiko">📍 Oishi Park</a></div></div>
+      <div class="stop"><span class="time">Noite</span><div class="what"><b>Onsen privado + jantar kaiseki</b> <span class="tag zen">a experiência</span></div></div>
+    </div>
+  </details>
+
+  <details class="day">
+    <summary><span class="day-num">D9<small>qua 10/3</small></span><span class="day-title"><b>Fuji de manhã cedo</b><span>06:00–09:30 é a janela de ouro</span></span><span class="chev">›</span></summary>
+    <div class="day-body">
+      <div class="stop"><span class="time">06:00</span><div class="what"><b>Verificar a webcam do hotel antes de sair</b></div></div>
+      <div class="stop"><span class="time">Manhã</span><div class="what"><b>Chureito Pagoda</b> <span class="tag zen">o postal clássico</span><p>Pagode + Fuji. O famoso "Lawson do Fuji" também por aqui.</p><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Chureito+Pagoda">📍 Google Maps</a></div></div>
+      <div class="stop"><span class="time">Resto</span><div class="what"><b>Calmo à volta do lago</b><p>2.ª noite de ryokan — a razão para dormir cá.</p></div></div>
+    </div>
+  </details>
+</div></section>
+
+<!-- KYOTO -->
+<section id="kyoto"><div class="pkm-wrap" style="top:22px;right:2%" data-float><img src="/japan/img/bulbasaur.png" alt="" aria-hidden="true" loading="lazy"></div><div class="wrap">
+  <div class="city-band band-kyoto"><span class="big kanji">京都</span><div><h3>Kyoto</h3><div class="sub">Dias 10–13 · 11–14 mar · malas por takkyubin</div></div><span class="nights">4 noites</span></div>
+
+  <details class="day" open>
+    <summary><span class="day-num">D10<small>qui 11/3</small></span><span class="day-title"><b>Kawaguchiko → Kyoto</b><span>~4h no total · noite fácil</span></span><span class="chev">›</span></summary>
+    <div class="day-body">
+      <div class="stop"><span class="time">Manhã</span><div class="what"><b>Kawaguchiko → Mishima (bus) → Shinkansen → Kyoto</b><p>Chegada à tarde.</p></div></div>
+      <div class="stop"><span class="time">Tarde</span><div class="what"><b>Nishiki Market</b> <span class="tag food">a cozinha de Kyoto</span><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Nishiki+Market+Kyoto">📍 Google Maps</a></div></div>
+      <div class="stop"><span class="time">Noite</span><div class="what"><b>Jantar em Pontochō / Gion</b><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Pontocho+Kyoto">📍 Google Maps</a></div></div>
+    </div>
+  </details>
+
+  <details class="day">
+    <summary><span class="day-num">D11<small>sex 12/3</small></span><span class="day-title"><b>Este / Higashiyama</b><span>Sul → norte, a acabar onde se janta</span></span><span class="chev">›</span></summary>
+    <div class="day-body">
+      <div class="stop"><span class="time">Manhã</span><div class="what"><b>Kiyomizu-dera</b><p>→ Sannenzaka / Ninenzaka (foto do pagode Yasaka).</p><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Kiyomizu-dera">📍 Google Maps</a></div></div>
+      <div class="stop"><span class="time">Tarde</span><div class="what"><b>Yasaka → Gion</b><p>Ponte Tatsumi, Shirakawa.</p><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Gion+Shirakawa+Tatsumi+Bridge">📍 Google Maps</a></div></div>
+      <div class="stop"><span class="time">Noite</span><div class="what"><b>Pontochō</b><p>Jantar à beira-rio.</p></div></div>
+    </div>
+  </details>
+
+  <details class="day">
+    <summary><span class="day-num">D12<small>sáb 13/3</small></span><span class="day-title"><b>Sul — Fushimi + sake + Uji + Nintendo</b><span>Cluster perfeito na linha sul</span></span><span class="chev">›</span></summary>
+    <div class="day-body">
+      <div class="stop"><span class="time">Amanhecer</span><div class="what"><b>Fushimi Inari</b> <span class="tag zen">mil torii</span><p>Antes das multidões.</p><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Fushimi+Inari+Taisha">📍 Google Maps</a></div></div>
+      <div class="stop"><span class="time">Manhã</span><div class="what"><b>Bairro de sake de Fushimi (Chūshojima)</b><p>Provas em Gekkeikan Ōkura e afins. Destilarias fecham ~16–17h.</p><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Gekkeikan+Okura+Sake+Museum">📍 Google Maps</a></div></div>
+      <div class="stop"><span class="time">Tarde</span><div class="what"><b>Uji — Nintendo Museum + Byōdō-in + matcha</b> <span class="tag poke">bónus (sorteio)</span><p>Nintendo Museum (se sair no sorteio) + Byōdō-in (o da moeda de ¥10) + o melhor matcha do Japão.</p><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Nintendo+Museum+Uji">📍 Nintendo Museum</a> <a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Byodo-in+Uji">📍 Byōdō-in</a></div></div>
+      <div class="note">Sem sorteio, o dia mantém-se cheio: Fushimi + sake + Byōdō-in + matcha.</div>
+    </div>
+  </details>
+
+  <details class="day">
+    <summary><span class="day-num">D13<small>dom 14/3</small></span><span class="day-title"><b>Noroeste — Arashiyama + Kinkaku-ji</b><span>Bambu → Pavilhão Dourado</span></span><span class="chev">›</span></summary>
+    <div class="day-body">
+      <div class="stop"><span class="time">Cedo</span><div class="what"><b>Arashiyama</b><p>Floresta de bambu, Tenryū-ji, parque dos macacos.</p><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Arashiyama+Bamboo+Grove">📍 Google Maps</a></div></div>
+      <div class="stop"><span class="time">Tarde</span><div class="what"><b>Kinkaku-ji (Pavilhão Dourado)</b> <span class="tag zen">ícone</span><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Kinkaku-ji">📍 Google Maps</a></div></div>
+    </div>
+  </details>
+</div></section>
+
+<!-- OSAKA -->
+<section id="osaka"><div class="pkm-wrap hide-sm flip" style="top:22px;left:2%" data-float><img src="/japan/img/charmander.png" alt="" aria-hidden="true" loading="lazy"></div><div class="wrap">
+  <div class="city-band band-osaka"><span class="big kanji">大阪</span><div><h3>Osaka + Nara</h3><div class="sub">Capital da comida · Dias 14–16 · 15–17 mar</div></div><span class="nights">3 noites</span></div>
+
+  <!-- SUMO (decidido NÃO ir — deixado aqui como nota, caso mudes de ideias):
+       Haru Basho, EDION Arena (5 min de Namba). As tuas datas caem no torneio (14–28 mar).
+       Ação forte das 14h às 18h, entras/sais livremente. Bilhetes ~fim jan/fev 2027 em
+       sumo.or.jp / revendedores (cadeira ~¥3.500 dia útil → ~¥20.000 ringside; há tojitsu-ken
+       de dia, por ordem de chegada). Encaixe possível: cidade de manhã, sumo à tarde no D16. -->
+
+  <details class="day" open>
+    <summary><span class="day-num">D14<small>seg 15/3</small></span><span class="day-title"><b>Kyoto → Nara → Osaka</b><span>Veados, o Grande Buda, e primeira Dotonbori</span></span><span class="chev">›</span></summary>
+    <div class="day-body">
+      <div class="stop"><span class="time">Manhã</span><div class="what"><b>Malas por takkyubin para Osaka · Kyoto → Nara (~45 min)</b></div></div>
+      <div class="stop"><span class="time">Meio-dia</span><div class="what"><b>Nara Park + Tōdai-ji</b> <span class="tag zen">o Grande Buda</span><p>Veados por todo o lado.</p><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Todai-ji+Nara">📍 Google Maps</a></div></div>
+      <div class="stop"><span class="time">Tarde</span><div class="what"><b>Nara → Osaka (~45 min) · check-in</b></div></div>
+      <div class="stop"><span class="time">Noite</span><div class="what"><b>Primeira ida a Dotonbori</b> <span class="tag food">street food</span><p>Takoyaki, okonomiyaki, kushikatsu.</p><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Dotonbori+Osaka">📍 Google Maps</a></div></div>
+    </div>
+  </details>
+
+  <details class="day">
+    <summary><span class="day-num">D15<small>ter 16/3</small></span><span class="day-title"><b>Super Nintendo World (USJ) · dia inteiro</b><span>Idealmente num dia de semana</span></span><span class="chev">›</span></summary>
+    <div class="day-body">
+      <div class="stop"><span class="time">Abertura</span><div class="what"><b>Chegar à abertura</b> <span class="tag poke">Express Pass</span><p>Express Pass ou entrada temporizada pela app logo de manhã.</p><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Universal+Studios+Japan">📍 Google Maps</a> <a class="map" target="_blank" rel="noopener" href="https://www.usj.co.jp/web/en/us">🎟️ Bilhetes USJ</a></div></div>
+    </div>
+  </details>
+
+  <details class="day">
+    <summary><span class="day-num">D16<small>qua 17/3</small></span><span class="day-title"><b>Osaka cidade + último mergulho gastronómico</b><span>Mercado, castelo, Den Den Town</span></span><span class="chev">›</span></summary>
+    <div class="day-body">
+      <div class="stop"><span class="time">Manhã</span><div class="what"><b>Kuromon Ichiba</b> <span class="tag food">marisco na hora</span><p>+ Osaka Castle.</p><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Kuromon+Ichiba+Market">📍 Kuromon</a> <a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Osaka+Castle">📍 Castelo</a></div></div>
+      <div class="stop"><span class="time">Tarde</span><div class="what"><b>Den Den Town + Pokémon Center Osaka</b> <span class="tag poke">a Akihabara de Osaka</span><p>Den Den Town + Pokémon Center Osaka (Umeda).</p><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Den+Den+Town+Osaka">📍 Den Den Town</a> <a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Pokemon+Center+Osaka+Umeda">📍 Pokémon Center</a></div></div>
+      <div class="stop"><span class="time">Noite</span><div class="what"><b>Última noite em Dotonbori / Shinsekai</b><p>Kushikatsu.</p><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Shinsekai+Osaka">📍 Google Maps</a></div></div>
+    </div>
+  </details>
+
+  <details class="day">
+    <summary><span class="day-num">D17<small>qui 18/3</small></span><span class="day-title"><b>Partida</b><span>Osaka → Kansai/KIX → Porto</span></span><span class="chev">›</span></summary>
+    <div class="day-body">
+      <div class="stop"><span class="time">—</span><div class="what"><b>Haruka Express (~75 min do centro) → KIX</b><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Kansai+International+Airport">📍 Google Maps</a></div></div>
+    </div>
+  </details>
+
+</div></section>
+
+<!-- COMIDA -->
+<section id="comida"><div class="pkm-wrap" style="top:20px;right:2%" data-float><img src="/japan/img/eevee.png" alt="" aria-hidden="true" loading="lazy"></div><div class="wrap">
+  <div class="sec-head"><div class="dot">🍣</div><div><small class="kanji">たべもの · restaurantes</small><h2>Restaurantes — shortlist por cidade</h2></div></div>
+  <p class="sec-intro">Topo (omakase/kaiseki): reservar 1–3 meses antes via <a href="https://pocket-concierge.jp/en" target="_blank" rel="noopener">Pocket Concierge</a> / OMAKASE / <a href="https://tabelog.com/en/" target="_blank" rel="noopener">Tabelog</a> / concierge. O resto é walk-in — confirmar horários no Tabelog/Google antes de ir. A solo, os balcões de omakase são mais fáceis (1 lugar).</p>
+  <div class="grid cols-3">
+    <div class="card"><h3>🐟 Mercados</h3><p class="meta">Tsukiji (Tóquio, D3) · Nishiki (Kyoto, D10) · Kuromon (Osaka, D16) · Ameyoko (Tóquio, D4).</p></div>
+    <div class="card"><h3>🗼 Tóquio — omakase</h3>
+      <ul>
+        <li><b>Valor, solo-friendly (~¥8–9k):</b> Sushi Tokyo Ten, Manten Sushi (Marunouchi), Sushi Ishijima (Ginza, almoço ~¥6.600).</li>
+        <li><b>Chef que fala inglês:</b> Sushi Rinda (Meguro).</li>
+        <li><b>Médio (¥15–30k):</b> reservar 1–3 meses antes.</li>
+        <li><b>Casual/barato:</b> kaiten Sushiro / Kura / Uobei; balcões de Toyosu; tachigui (sushi de pé).</li>
+      </ul></div>
+    <div class="card"><h3>⛩️ Kyoto</h3>
+      <ul>
+        <li><b>Kaiseki:</b> Kikunoi (a referência), Hyotei, Nakamura (400+ anos). Almoço mais barato; reservar semanas antes.</li>
+        <li><b>Yudofu:</b> Okutan, junto a Nanzen-ji (~¥2.500–5.000).</li>
+        <li><b>Matcha:</b> Nakamura Tokichi (Uji), Tsujirihei Honten, Ippodo Tea, Saryo Tsujiri.</li>
+      </ul></div>
+    <div class="card"><h3>🐙 Osaka</h3>
+      <ul>
+        <li><b>Takoyaki:</b> Wanaka (Namba), Aizuya (o original, 1933), Kukuru (Dotonbori).</li>
+        <li><b>Okonomiyaki:</b> Mizuno (Dotonbori, 1945).</li>
+        <li><b>Kushikatsu:</b> Daruma (Shinsekai, 1929 — não molhar o espeto duas vezes!).</li>
+        <li><b>Instituições:</b> 551 Horai (pãezinhos de porco), Kani Doraku (caranguejo), Rikuro (cheesecake fofo).</li>
+      </ul></div>
+    <div class="card"><h3>🌶️ Aventureiro</h3><p class="meta">Fugu (baiacu, ¥8.000–20.000) · wagyu teppanyaki. Em Osaka, à noite.</p></div>
+  </div>
+</div></section>
+
+<!-- FOTOS -->
+<section id="fotos"><div class="wrap">
+  <div class="sec-head"><div class="dot">📸</div><div><small class="kanji">しゃしん · spots de foto</small><h2>Becos &amp; spots de foto</h2></div></div>
+  <div class="grid cols-2">
+    <div class="card"><h3>⛩️ Kyoto</h3><p class="meta">Pagode Yasaka da Sannenzaka · Gion Shirakawa / ponte Tatsumi · Pontochō à noite · torii de Fushimi Inari · bambu de Arashiyama.</p></div>
+    <div class="card"><h3>🏮 Tóquio (perto de Ueno)</h3><p class="meta">Yanaka Ginza (escadaria "Yūyake Dandan" ao pôr do sol) · Nezu-jinja (túnel de torii) · Kagurazaka · Omoide Yokocho + Golden Gai.</p><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Yanaka+Ginza">📍 Yanaka</a> <a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Nezu+Shrine+Tokyo">📍 Nezu-jinja</a></div>
+    <div class="card"><h3>🗻 Fuji</h3><p class="meta">Chureito Pagoda · Oishi Park · "Lawson do Fuji".</p></div>
+    <div class="card"><h3>🎡 Osaka</h3><p class="meta">Letreiro Glico (Dotonbori) · Shinsekai / Tsutenkaku.</p><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Glico+Sign+Dotonbori">📍 Glico</a></div>
+  </div>
+</div></section>
+
+<!-- CHECKLIST -->
+<section id="checklist"><div class="wrap">
+  <div class="sec-head"><div class="dot">✅</div><div><small class="kanji">じゅんび · antes de sair</small><h2>Checklist prático</h2></div></div>
+  <ul class="checklist">
+    <li><b>eSIM ou pocket WiFi</b> (Airalo/Ubigi) — ativar antes de sair.</li>
+    <li><b>Adaptador de tomada</b> — Japão é tipo A, 100V (Portugal C/F); confirmar que os carregadores são bivolt.</li>
+    <li><b>Dinheiro vivo</b> — levantar em ATMs 7-Eleven com cartão estrangeiro.</li>
+    <li><b>Suica/PASMO no telemóvel.</b></li>
+    <li><b>Seguro de viagem.</b></li>
+    <li><b>Google Maps + Translate offline.</b></li>
+    <li><b>Passaporte à mão</b> para tax-free.</li>
+  </ul>
+</div></section>
+
+</main>
+
+<footer>
+  <div class="fuji-line kanji">いってきます</div>
+  <p>🌸🗻🍜 · Tóquio 7 · Kawaguchiko 2 · Kyoto 4 · Osaka 3 · saída 18 mar · 16 noites</p>
+  <a class="backhome" href="/">← fabiotrajano.com</a>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+/* pétalas */
+(function(){
+  const c=document.getElementById('petals'); if(!c) return;
+  const g=['🌸','🌸','🌸','❀','✿'];
+  for(let i=0;i<14;i++){const p=document.createElement('span');p.className='petal';p.textContent=g[i%g.length];
+    p.style.left=(Math.random()*100)+'%';p.style.animationDuration=(7+Math.random()*8)+'s';
+    p.style.animationDelay=(-Math.random()*10)+'s';p.style.fontSize=(12+Math.random()*14)+'px';c.appendChild(p);}
+})();
+
+/* pokémon aparecem ao fazer scroll */
+(function(){
+  const pk=document.querySelectorAll('.pkm-wrap'); if(!pk.length) return;
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.2});
+  pk.forEach(el=>io.observe(el));
+})();
+
+/* checklist de reservas */
+(function(){
+  const items=[
+    {id:'voo27', when:'✅ 1 e 18 mar', t:'Voo ANA/Lufthansa (Star Alliance)', d:'Bagagem despachada + mão incluídas.', done:true},
+    {id:'ryokan27', when:'JÁ — 2–4 meses antes', t:'Ryokan Kawaguchiko (rotenburo privado + Fuji)', d:'Esgotam cedo; o banho privado resolve privacidade + tatuagem.'},
+    /* SUMO — decidido NÃO ir (mantido em comentário caso mudes de ideias):
+    {id:'sumo27', when:'Bilhetes ~fim jan/fev 2027', t:'Sumo — Haru Basho Osaka (14–28 mar)', d:'sumo.or.jp ou revendedores. Cadeira ~¥3.500 (dia útil) a ~¥20.000 ringside. Há tojitsu-ken (dia) de manhã, por ordem de chegada.'}, */
+    {id:'nintendo27', when:'Candidatar ~dez 2026 (sorteio)', t:'Nintendo Museum (Uji)', d:'Conta Nintendo. Resultado dia 1 do mês anterior; pagar até dia 7. Bónus, não âncora.'},
+    {id:'usj27', when:'Semanas antes', t:'USJ + Super Nintendo World', d:'Bilhete + Express Pass, ou entrada temporizada pela app de manhã. Dia de semana.'},
+    {id:'omakase27', when:'1–3 meses antes', t:'Omakase topo (Tóquio + Kansai)', d:'Pocket Concierge / OMAKASE / Tabelog / concierge. Pedem cartão.'},
+    {id:'pokecafe27', when:'~31 dias antes', t:'Pokémon Café (Nihonbashi)', d:'Abre 31 dias antes, esgota rápido.'},
+    {id:'teamlab27', when:'1–2 semanas antes', t:'teamLab (Planets / Borderless)', d:'Hora marcada.'},
+    {id:'shibuyasky27', when:'Dias antes', t:'Shibuya Sky', d:'Reservar a hora do pôr do sol.'},
+  ];
+  const wrap=document.getElementById('bookingList');
+  let saved={}; try{saved=JSON.parse(localStorage.getItem('jp-booking-27')||'{}')}catch(e){}
+  items.forEach(it=>{
+    const on=(it.id in saved)?saved[it.id]:!!it.done;
+    const card=document.createElement('div');card.className='card book-item'+(on?' done':'');
+    card.innerHTML=`<input type="checkbox" ${on?'checked':''} id="cb-${it.id}">
+      <label for="cb-${it.id}"><span class="when">${it.when}</span><br><b>${it.t}</b><br><span class="meta">${it.d}</span></label>`;
+    const cb=card.querySelector('input');
+    cb.addEventListener('change',()=>{saved[it.id]=cb.checked;card.classList.toggle('done',cb.checked);localStorage.setItem('jp-booking-27',JSON.stringify(saved));});
+    wrap.appendChild(card);
+  });
+})();
+
+/* mapa */
+(function(){
+  if(typeof L==='undefined') return;
+  const map=L.map('map',{scrollWheelZoom:false}).setView([35.4,137.5],6);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{attribution:'© OpenStreetMap © CARTO',maxZoom:18}).addTo(map);
+  const C={base:'#3b4a6b',poke:'#e15a54',zen:'#7fa66a',food:'#efa06b',air:'#6ba7c9'};
+  function pin(lat,lng,name,color,q,big){
+    L.circleMarker([lat,lng],{radius:big?11:8,color:'#fff',weight:big?3:2,fillColor:color,fillOpacity:1}).addTo(map)
+      .bindPopup('<b>'+name+'</b><br><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q||name)+'">Abrir no Google Maps ↗</a>');
+  }
+  const bases=[
+    [35.7138,139.7770,'Tóquio — base Ueno (7 noites)','Ueno Station Tokyo'],
+    [35.5104,138.7689,'Kawaguchiko — ryokan (2 noites)','Kawaguchiko Station'],
+    [34.9946,135.7587,'Kyoto (4 noites)','Kyoto Station'],
+    [34.6660,135.5010,'Osaka — Namba/Dotonbori (3 noites)','Namba Osaka'],
+  ];
+  const spots=[
+    [35.6595,139.7005,C.poke,'Shibuya PARCO — Nintendo + Pokémon','Shibuya PARCO'],
+    [35.6654,139.7707,C.food,'Tsukiji Outer Market','Tsukiji Outer Market'],
+    [35.6812,139.7671,C.poke,'Pokémon Center DX (Nihonbashi)','Pokemon Center Tokyo DX'],
+    [35.7148,139.7967,C.zen,'Sensō-ji (Asakusa)','Senso-ji'],
+    [35.6984,139.7731,C.poke,'Akihabara','Akihabara'],
+    [35.3168,139.5358,C.zen,'Kamakura — Grande Buda (day-trip)','Kotoku-in Great Buddha Kamakura'],
+    [35.4996,138.8000,C.zen,'Chureito Pagoda','Chureito Pagoda'],
+    [34.9671,135.7727,C.zen,'Fushimi Inari','Fushimi Inari Taisha'],
+    [34.8901,135.8072,C.poke,'Nintendo Museum (Uji)','Nintendo Museum Uji'],
+    [35.0094,135.6737,C.zen,'Arashiyama (bambu)','Arashiyama Bamboo Grove'],
+    [35.0394,135.7292,C.zen,'Kinkaku-ji','Kinkaku-ji'],
+    [34.6851,135.8430,C.zen,'Nara Park + Tōdai-ji','Todai-ji Nara'],
+    [34.6654,135.4323,C.poke,'Super Nintendo World (USJ)','Universal Studios Japan'],
+    [34.6873,135.5259,C.zen,'Osaka Castle','Osaka Castle'],
+  ];
+  const airports=[
+    [35.7719,140.3929,'Narita (entrada)','Narita Airport'],
+    [34.4347,135.2440,'Kansai / KIX (saída)','Kansai International Airport'],
+  ];
+  bases.forEach(b=>pin(b[0],b[1],b[2],C.base,b[3],true));
+  spots.forEach(s=>pin(s[0],s[1],s[3],s[2],s[4]));
+  airports.forEach(a=>pin(a[0],a[1],a[2],C.air,a[3]));
+  const route=[[35.7719,140.3929],[35.7138,139.7770],[35.5104,138.7689],[34.9946,135.7587],[34.6660,135.5010],[34.4347,135.2440]];
+  L.polyline(route,{color:'#d97f92',weight:3,dashArray:'6 8',opacity:.8}).addTo(map);
+  map.fitBounds(L.latLngBounds(route.concat(spots.map(s=>[s[0],s[1]]))),{padding:[40,40]});
+})();
+</script>
+</body>
+</html>
