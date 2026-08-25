@@ -41,11 +41,6 @@ body{
 .heart{position:absolute;top:-40px;font-size:20px;will-change:transform;filter:drop-shadow(0 0 6px var(--pink))}
 @media(prefers-reduced-motion:reduce){.heart{display:none}}
 
-.lang{position:fixed;top:12px;right:14px;z-index:45;font-family:"Press Start 2P";font-size:.55rem;
-  color:var(--cyan);border:2px solid var(--cyan);border-radius:4px;padding:7px 9px;text-decoration:none;
-  background:rgba(20,10,40,.5)}
-.lang:hover{background:var(--cyan);color:#0b0b2e}
-
 .stage{position:relative;z-index:10;width:100%;max-width:760px;padding:28px 18px 120px;flex:1;
   display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh}
 .screen{display:none;width:100%;animation:pop .4s ease both}
@@ -117,7 +112,6 @@ h2{font-size:clamp(.85rem,3.6vw,1.35rem);color:var(--cyan);text-shadow:0 0 10px 
 <div class="hearts" id="hearts"></div>
 <div class="scan"></div>
 <div class="vig"></div>
-<a class="lang" id="langToggle" href="#">EN</a>
 
 <div class="stage">
 
@@ -253,11 +247,6 @@ T('tag4',S.tag4); T('title4',S.title4,true); T('cardLate',S.late);
 T('btnShare',S.share); T('btnRestart',S.restart);
 document.querySelectorAll('#actGrid .chip').forEach(c=>{ c.querySelector('.lbl').textContent = S.acts[c.dataset.key]; });
 document.getElementById('dow').innerHTML = S.dow.map(d=>`<span>${d}</span>`).join('');
-/* language toggle */
-(function(){
-  const t=document.getElementById('langToggle'); t.textContent=S.lang;
-  t.href = LANG==='en' ? '/date/' : '/date/en/';
-})();
 
 /* ================= falling hearts ================= */
 (function(){
