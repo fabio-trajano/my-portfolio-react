@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>♥ Player 2 needed ♥</title>
+<meta name="description" content="Um convite." />
+<meta name="theme-color" content="#1a0b2e" />
+<meta name="robots" content="noindex" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#1a0b2e; --bg2:#2d1b4e;
+  --pink:#ff5ca2; --pink-lt:#ffd6e8;
+  --cyan:#4de2ff; --yellow:#ffe14d; --green:#4dff9e; --purple:#b76cff;
+  --ink:#fdf4ff;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow-x:hidden}
+body{
+  font-family:"VT323",monospace;
+  background:
+    radial-gradient(1200px 700px at 50% -10%, #3a1f66 0%, transparent 60%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg2) 60%, #12071f 100%);
+  color:var(--ink);min-height:100%;
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+  text-align:center;position:relative;-webkit-font-smoothing:antialiased;user-select:none;
+}
+.floor{position:fixed;left:0;right:0;bottom:0;height:38vh;z-index:0;pointer-events:none;overflow:hidden;opacity:.5}
+.floor::before{content:"";position:absolute;left:-50%;right:-50%;bottom:-40%;top:0;
+  background-image:linear-gradient(var(--pink) 2px, transparent 2px),linear-gradient(90deg, var(--pink) 2px, transparent 2px);
+  background-size:44px 44px;transform:perspective(340px) rotateX(62deg);opacity:.35}
+.scan{position:fixed;inset:0;z-index:40;pointer-events:none;
+  background:repeating-linear-gradient(rgba(0,0,0,0) 0 2px, rgba(0,0,0,.18) 2px 4px);mix-blend-mode:multiply;opacity:.5}
+.vig{position:fixed;inset:0;z-index:41;pointer-events:none;box-shadow:inset 0 0 180px 40px rgba(0,0,0,.6)}
+.hearts{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.heart{position:absolute;top:-40px;font-size:20px;will-change:transform;filter:drop-shadow(0 0 6px var(--pink))}
+@media(prefers-reduced-motion:reduce){.heart{display:none}}
+
+.lang{position:fixed;top:12px;right:14px;z-index:45;font-family:"Press Start 2P";font-size:.55rem;
+  color:var(--cyan);border:2px solid var(--cyan);border-radius:4px;padding:7px 9px;text-decoration:none;
+  background:rgba(20,10,40,.5)}
+.lang:hover{background:var(--cyan);color:#0b0b2e}
+
+.stage{position:relative;z-index:10;width:100%;max-width:760px;padding:28px 18px 120px;flex:1;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh}
+.screen{display:none;width:100%;animation:pop .4s ease both}
+.screen.active{display:flex;flex-direction:column;align-items:center}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+
+h1,h2{font-family:"Press Start 2P",monospace;line-height:1.5;margin:0}
+h1{font-size:clamp(1rem,4.4vw,1.7rem);color:var(--yellow);text-shadow:0 0 10px rgba(255,225,77,.6), 3px 3px 0 var(--pink)}
+h2{font-size:clamp(.85rem,3.6vw,1.35rem);color:var(--cyan);text-shadow:0 0 10px rgba(77,226,255,.55), 2px 2px 0 #143}
+.tag{font-family:"Press Start 2P";font-size:.6rem;color:var(--pink);letter-spacing:.15em;
+  border:2px solid var(--pink);padding:7px 12px;margin-bottom:22px;display:inline-block;
+  box-shadow:0 0 12px rgba(255,92,162,.4);animation:blink 1.6s steps(1) infinite}
+@keyframes blink{50%{opacity:.45}}
+.sub{font-size:1.5rem;color:#e7d6ff;margin:14px 0 0;line-height:1.25}
+
+.btn{font-family:"Press Start 2P",monospace;font-size:clamp(.8rem,3.2vw,1.15rem);text-transform:uppercase;
+  color:#120a24;cursor:pointer;border:4px solid #fff;border-radius:4px;padding:18px 26px;
+  background:var(--cyan);box-shadow:6px 6px 0 rgba(0,0,0,.55);
+  transition:transform .08s ease, box-shadow .08s ease, background .2s;-webkit-tap-highlight-color:transparent;position:relative}
+.btn:hover{filter:brightness(1.06)}
+.btn:active{transform:translate(4px,4px);box-shadow:2px 2px 0 rgba(0,0,0,.55)}
+.btn-yes{background:var(--green);border-color:#eafff2;box-shadow:6px 6px 0 rgba(0,0,0,.55), 0 0 22px rgba(77,255,158,.6);transform-origin:center}
+.btn-no{background:var(--pink);color:#2a0b1c;border-color:var(--pink-lt)}
+.row{display:flex;gap:26px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:30px;min-height:120px}
+#plead{font-size:1.7rem;color:var(--yellow);min-height:44px;margin-top:26px;text-shadow:0 0 8px rgba(255,225,77,.5)}
+
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;width:100%;max-width:560px;margin-top:26px}
+.chip{font-family:"Press Start 2P";font-size:.7rem;line-height:1.5;color:var(--ink);
+  background:rgba(183,108,255,.14);border:3px solid var(--purple);border-radius:6px;padding:20px 12px;cursor:pointer;
+  transition:transform .08s, background .15s, box-shadow .15s;box-shadow:4px 4px 0 rgba(0,0,0,.45)}
+.chip .em{display:block;font-family:"VT323";font-size:2.4rem;margin-bottom:8px;line-height:1}
+.chip:hover{background:rgba(183,108,255,.28)}
+.chip:active,.chip.sel{transform:translate(3px,3px);box-shadow:1px 1px 0 rgba(0,0,0,.45);
+  background:var(--pink);color:#2a0b1c;border-color:var(--pink-lt)}
+
+.cal{width:100%;max-width:420px;margin:22px auto 0;background:rgba(20,10,40,.6);
+  border:3px solid var(--cyan);border-radius:8px;padding:14px;box-shadow:0 0 24px rgba(77,226,255,.25)}
+.cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.cal-head b{font-family:"Press Start 2P";font-size:.7rem;color:var(--yellow)}
+.cal-nav{font-family:"Press Start 2P";font-size:.7rem;background:var(--cyan);color:#120a24;border:2px solid #fff;padding:8px 10px;cursor:pointer;border-radius:3px}
+.cal-nav:disabled{opacity:.3;cursor:not-allowed}
+.dow{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:4px}
+.dow span{font-family:"Press Start 2P";font-size:.5rem;color:var(--pink);padding:4px 0}
+.days{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:1.4rem;
+  border:2px solid transparent;border-radius:4px;cursor:pointer;color:var(--ink);background:rgba(255,255,255,.04)}
+.day:hover{border-color:var(--cyan)}
+.day.empty{background:none;cursor:default}
+.day.past{opacity:.22;cursor:not-allowed;text-decoration:line-through}
+.day.sel{background:var(--pink);color:#2a0b1c;border-color:var(--pink-lt);font-weight:bold;box-shadow:0 0 12px rgba(255,92,162,.6)}
+.times{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:520px;margin:20px auto 0}
+.time{font-family:"Press Start 2P";font-size:.62rem;color:var(--ink);background:rgba(77,226,255,.12);
+  border:2px solid var(--cyan);border-radius:4px;padding:11px 12px;cursor:pointer}
+.time:hover{background:rgba(77,226,255,.25)}
+.time.sel{background:var(--yellow);color:#241c00;border-color:#fff}
+.hint{font-size:1.3rem;color:#c9b6e6;margin-top:16px;min-height:26px}
+.actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+.mini{font-family:"Press Start 2P";font-size:.62rem;color:var(--ink);background:transparent;border:2px solid #6b5a8a;border-radius:4px;padding:12px 14px;cursor:pointer}
+.mini:hover{border-color:var(--cyan);color:var(--cyan)}
+.card{background:rgba(20,10,40,.7);border:3px solid var(--green);border-radius:10px;padding:22px;margin-top:22px;
+  box-shadow:0 0 26px rgba(77,255,158,.3);max-width:520px;width:100%}
+.card .line{font-size:1.7rem;margin:6px 0}
+.card .big{font-family:"Press Start 2P";font-size:.9rem;color:var(--yellow);margin:8px 0;line-height:1.5}
+#mailStatus a{color:var(--cyan)}
+</style>
+</head>
+<body>
+<div class="floor"></div>
+<div class="hearts" id="hearts"></div>
+<div class="scan"></div>
+<div class="vig"></div>
+<a class="lang" id="langToggle" href="#">EN</a>
+
+<div class="stage">
+
+  <section class="screen active" id="s-ask">
+    <span class="tag" id="tag1"></span>
+    <h1 id="title1"></h1>
+    <p class="sub" id="sub"></p>
+    <div class="row" id="askRow">
+      <button class="btn btn-yes" id="btnYes"></button>
+      <button class="btn btn-no" id="btnNo"></button>
+    </div>
+    <div id="plead"></div>
+  </section>
+
+  <section class="screen" id="s-act">
+    <span class="tag" id="tag2"></span>
+    <h2 id="title2"></h2>
+    <div class="grid" id="actGrid">
+      <button class="chip" data-key="dinner"><span class="em">🍝</span><span class="lbl"></span></button>
+      <button class="chip" data-key="bar"><span class="em">☕</span><span class="lbl"></span></button>
+      <button class="chip" data-key="picnic"><span class="em">🧺</span><span class="lbl"></span></button>
+      <button class="chip" data-key="cinema"><span class="em">🎬</span><span class="lbl"></span></button>
+      <button class="chip" data-key="walk"><span class="em">🌆</span><span class="lbl"></span></button>
+      <button class="chip" data-key="surprise"><span class="em">🎁</span><span class="lbl"></span></button>
+    </div>
+    <div class="actions"><button class="mini" id="backAct" data-back="s-ask"></button></div>
+  </section>
+
+  <section class="screen" id="s-when">
+    <span class="tag" id="tag3"></span>
+    <h2 id="title3"></h2>
+    <div class="cal" id="cal">
+      <div class="cal-head">
+        <button class="cal-nav" id="calPrev">◄</button>
+        <b id="calTitle"></b>
+        <button class="cal-nav" id="calNext">►</button>
+      </div>
+      <div class="dow" id="dow"></div>
+      <div class="days" id="calDays"></div>
+    </div>
+    <div class="times" id="times"></div>
+    <p class="hint" id="whenHint"></p>
+    <div class="actions">
+      <button class="mini" id="backWhen" data-back="s-act"></button>
+      <button class="btn btn-yes" id="btnConfirm" style="font-size:.8rem;padding:14px 20px;opacity:.4;pointer-events:none"></button>
+    </div>
+  </section>
+
+  <section class="screen" id="s-done">
+    <span class="tag" id="tag4"></span>
+    <h1 id="title4"></h1>
+    <div class="card">
+      <div class="big" id="sumAct"></div>
+      <div class="line" id="sumWhen"></div>
+      <div class="line" style="color:#c9b6e6" id="cardLate"></div>
+    </div>
+    <div class="actions">
+      <button class="btn" id="btnShare" style="font-size:.72rem;padding:14px 18px;background:var(--green);border-color:#eafff2"></button>
+      <button class="mini" id="btnRestart"></button>
+    </div>
+    <p class="hint" id="mailStatus"></p>
+  </section>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+/* ================= i18n ================= */
+const STR = {
+  pt:{
+    lang:'EN', htmlLang:'pt', locale:'pt-PT',
+    tag1:'♥ insert coin ♥',
+    title1:'QUERES SAIR<br>COMIGO?',
+    sub:'Só uma date. Sem pressão.<br>(ok, talvez um bocadinho 👉👈)',
+    yes:'SIM 💘', no:'NÃO',
+    plead:["Tens a certeza? 🥺","Pensa bem...","Vá lá, por favooor 🙏","Pretty please 🌸",
+      "O botão SIM está a crescer sozinho 👀","A sério?? 😳","O NÃO está a ficar tímido...",
+      "Prometo que vai ser divertido 🎮","Última hipótese de fugir... ou não 😏",
+      "Ok mas o SIM está MESMO apetecível 💚","💔😭","Já agora... SIM fica-te tão bem ✨"],
+    tag2:'♥ level 2 ♥', title2:'BOA ESCOLHA! 🎉<br>O QUE PREFERES?',
+    acts:{dinner:'Jantar',bar:'Bar / Café',picnic:'Picnic',cinema:'Cinema',walk:'Passeio à beira-mar',surprise:'Surpresa'},
+    back:'◄ voltar',
+    tag3:'♥ level 3 ♥', title3:'PERFEITO!<br>QUANDO?',
+    dow:['S','T','Q','Q','S','S','D'],
+    months:['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+    hintBoth:'Escolhe o dia e a hora ⤴', hintHour:'Agora a hora ⤴',
+    confirm:'CONFIRMAR ▶',
+    tag4:'♥ high score ♥', title4:'ENCONTRO<br>MARCADO! 💖',
+    late:'Não te atrases 😌', share:'PARTILHAR 💌', restart:'recomeçar ↺',
+    shareText:(a,w)=>`É oficial: encontro marcado! ${a} · ${w} 💖`,
+    mailSending:'A avisar o Fábio... 📨', mailSent:'O Fábio já foi avisado! 💌✅',
+    mailFail:'Não consegui enviar automaticamente —', mailLink:'avisa o Fábio aqui 💌',
+    copied:'Copiado! 📋'
+  },
+  en:{
+    lang:'PT', htmlLang:'en', locale:'en-GB',
+    tag1:'♥ insert coin ♥',
+    title1:'WOULD YOU GO<br>ON A DATE<br>WITH ME?',
+    sub:'Just one date. No pressure.<br>(ok, maybe a little 👉👈)',
+    yes:'YES 💘', no:'NO',
+    plead:["Are you sure? 🥺","Think it over...","Come on, pleaaase 🙏","Pretty please 🌸",
+      "The YES button is growing on its own 👀","Really?? 😳","The NO is getting shy...",
+      "I promise it'll be fun 🎮","Last chance to escape... or not 😏",
+      "Ok but YES looks REALLY tempting 💚","💔😭","By the way... YES suits you so well ✨"],
+    tag2:'♥ level 2 ♥', title2:'GREAT CHOICE! 🎉<br>WHAT DO YOU FANCY?',
+    acts:{dinner:'Dinner',bar:'Bar / Café',picnic:'Picnic',cinema:'Cinema',walk:'Seaside stroll',surprise:'Surprise'},
+    back:'◄ back',
+    tag3:'♥ level 3 ♥', title3:'PERFECT!<br>WHEN?',
+    dow:['M','T','W','T','F','S','S'],
+    months:['January','February','March','April','May','June','July','August','September','October','November','December'],
+    hintBoth:'Pick the day and time ⤴', hintHour:'Now the time ⤴',
+    confirm:'CONFIRM ▶',
+    tag4:'♥ high score ♥', title4:'DATE<br>LOCKED IN! 💖',
+    late:"Don't be late 😌", share:'SHARE 💌', restart:'restart ↺',
+    shareText:(a,w)=>`It's official: we have a date! ${a} · ${w} 💖`,
+    mailSending:'Letting Fábio know... 📨', mailSent:'Fábio has been notified! 💌✅',
+    mailFail:'Could not send automatically —', mailLink:'let Fábio know here 💌',
+    copied:'Copied! 📋'
+  }
+};
+const LANG = /\/en\/?$/.test(location.pathname) ? 'en' : 'pt';
+const S = STR[LANG];
+document.documentElement.lang = S.htmlLang;
+
+/* fill static text */
+function T(id,val,html){const el=document.getElementById(id);if(html)el.innerHTML=val;else el.textContent=val;}
+T('tag1',S.tag1); T('title1',S.title1,true); T('sub',S.sub,true);
+T('btnYes',S.yes); T('btnNo',S.no);
+T('tag2',S.tag2); T('title2',S.title2,true); T('backAct',S.back);
+T('tag3',S.tag3); T('title3',S.title3,true); T('backWhen',S.back);
+T('btnConfirm',S.confirm); T('whenHint',S.hintBoth);
+T('tag4',S.tag4); T('title4',S.title4,true); T('cardLate',S.late);
+T('btnShare',S.share); T('btnRestart',S.restart);
+document.querySelectorAll('#actGrid .chip').forEach(c=>{ c.querySelector('.lbl').textContent = S.acts[c.dataset.key]; });
+document.getElementById('dow').innerHTML = S.dow.map(d=>`<span>${d}</span>`).join('');
+/* language toggle */
+(function(){
+  const t=document.getElementById('langToggle'); t.textContent=S.lang;
+  t.href = LANG==='en' ? '/date/' : '/date/en/';
+})();
+
+/* ================= falling hearts ================= */
+(function(){
+  const box=document.getElementById('hearts');
+  const glyphs=['❤','💗','💖','💘','♥','💕'];
+  function spawn(burst){
+    const h=document.createElement('span');h.className='heart';
+    h.textContent=glyphs[(Math.random()*glyphs.length)|0];
+    h.style.fontSize=(14+Math.random()*26)+'px';h.style.left=(Math.random()*100)+'%';
+    const dur=(burst?2.2:5)+Math.random()*(burst?1.5:6);const drift=(Math.random()*120-60);
+    h.style.color=['#ff5ca2','#ffd6e8','#b76cff','#ff9ecb'][(Math.random()*4)|0];
+    h.animate([{transform:'translateY(-40px) translateX(0) rotate(0)',opacity:0},{opacity:.95,offset:.1},
+      {transform:`translateY(105vh) translateX(${drift}px) rotate(${Math.random()*720-360}deg)`,opacity:.15}],
+      {duration:dur*1000,easing:'linear'});
+    setTimeout(()=>h.remove(),dur*1000);box.appendChild(h);
+  }
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    setInterval(()=>spawn(false),500);
+    for(let i=0;i<8;i++) setTimeout(()=>spawn(false),i*120);
+    window.__heartBurst=()=>{for(let i=0;i<40;i++) setTimeout(()=>spawn(true),i*30);};
+  } else { window.__heartBurst=()=>{}; }
+})();
+
+/* ================= router ================= */
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');window.scrollTo(0,0);}
+document.querySelectorAll('[data-back]').forEach(b=>b.addEventListener('click',()=>show(b.dataset.back)));
+
+/* ================= screen 1: the ask ================= */
+(function(){
+  const yes=document.getElementById('btnYes'),no=document.getElementById('btnNo'),plead=document.getElementById('plead');
+  let n=0;
+  no.addEventListener('click',()=>{
+    n++; plead.textContent=S.plead[Math.min(n-1,S.plead.length-1)];
+    yes.style.transform='scale('+Math.min(1+n*0.28,3.1)+')';
+    const ns=Math.max(1-n*0.11,0.4); no.style.transform='scale('+ns+')';
+    if(n>=8) no.style.opacity=.5;
+    if(n>=11){ no.textContent='😔'; no.style.pointerEvents='none'; }
+  });
+  no.addEventListener('pointerover',()=>{
+    if(matchMedia('(hover: hover)').matches){
+      const s=Math.max(1-n*0.11,0.4);
+      no.style.transform='translate('+(Math.random()*90-45)+'px,'+(Math.random()*50-25)+'px) scale('+s+')';
+    }
+  });
+  yes.addEventListener('click',()=>{ window.__heartBurst(); show('s-act'); });
+})();
+
+/* ================= screen 2: activity ================= */
+let choice={key:null,act:null,actEmoji:null,date:null,hour:null};
+document.querySelectorAll('#actGrid .chip').forEach(c=>{
+  c.addEventListener('click',()=>{
+    choice.key=c.dataset.key; choice.act=S.acts[c.dataset.key]; choice.actEmoji=c.querySelector('.em').textContent;
+    window.__heartBurst(); buildCalendar(); show('s-when');
+  });
+});
+
+/* ================= screen 3: calendar + time ================= */
+let viewY,viewM,today;
+function startOfToday(){const d=new Date();d.setHours(0,0,0,0);return d;}
+function buildCalendar(){today=startOfToday();viewY=today.getFullYear();viewM=today.getMonth();renderMonth();renderTimes();}
+function renderMonth(){
+  document.getElementById('calTitle').textContent=S.months[viewM]+' '+viewY;
+  const wrap=document.getElementById('calDays');wrap.innerHTML='';
+  const first=new Date(viewY,viewM,1);let lead=(first.getDay()+6)%7;
+  const dim=new Date(viewY,viewM+1,0).getDate();
+  for(let i=0;i<lead;i++){const e=document.createElement('div');e.className='day empty';wrap.appendChild(e);}
+  for(let d=1;d<=dim;d++){
+    const cell=document.createElement('div');cell.className='day';cell.textContent=d;
+    const dd=new Date(viewY,viewM,d);
+    if(dd<today) cell.classList.add('past');
+    else cell.addEventListener('click',()=>{
+      wrap.querySelectorAll('.day.sel').forEach(x=>x.classList.remove('sel'));
+      cell.classList.add('sel');choice.date=dd;updateWhen();
+    });
+    if(choice.date && dd.getTime()===choice.date.getTime()) cell.classList.add('sel');
+    wrap.appendChild(cell);
+  }
+  document.getElementById('calPrev').disabled=(viewY===today.getFullYear()&&viewM===today.getMonth());
+}
+function renderTimes(){
+  const t=document.getElementById('times');t.innerHTML='';
+  ['11:00','12:00','13:00','16:00','17:00','18:00','19:00','20:00','21:00','22:00'].forEach(s=>{
+    const b=document.createElement('button');b.className='time';b.textContent=s;
+    b.addEventListener('click',()=>{t.querySelectorAll('.time.sel').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');choice.hour=s;updateWhen();});
+    t.appendChild(b);
+  });
+}
+document.getElementById('calPrev').addEventListener('click',()=>{if(viewM===0){viewM=11;viewY--;}else viewM--;renderMonth();});
+document.getElementById('calNext').addEventListener('click',()=>{if(viewM===11){viewM=0;viewY++;}else viewM++;renderMonth();});
+function fmtDate(d){return d.toLocaleDateString(S.locale,{weekday:'long',day:'numeric',month:'long'});}
+function updateWhen(){
+  const hint=document.getElementById('whenHint'),btn=document.getElementById('btnConfirm');
+  if(choice.date&&choice.hour){hint.textContent='📅 '+fmtDate(choice.date)+' · '+choice.hour;btn.style.opacity=1;btn.style.pointerEvents='auto';}
+  else if(choice.date) hint.textContent=S.hintHour;
+  else hint.textContent=S.hintBoth;
+}
+
+/* ================= confirm + email ================= */
+const EMAILJS={service:'service_x1hewh5',template:'template_2ki8hlo',pubkey:'vxDcl4UI2jbOQBn6f',to:'fabiotrajano.eng@gmail.com'};
+try{ if(window.emailjs) emailjs.init({publicKey:EMAILJS.pubkey}); }catch(e){}
+function mailtoHref(a,w){
+  const subj=(LANG==='en'?'Date locked in 💖':'Encontro marcado 💖');
+  const body=(LANG==='en'?`We have a date!\n\nActivity: ${a}\nWhen: ${w}`:`Temos um encontro!\n\nAtividade: ${a}\nQuando: ${w}`);
+  return 'mailto:'+EMAILJS.to+'?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
+}
+function notifyEmail(a,w){
+  const status=document.getElementById('mailStatus');
+  const params={
+    name:'Página /date ('+LANG.toUpperCase()+')', from_name:'Página /date',
+    email:EMAILJS.to, reply_to:EMAILJS.to,
+    title:(LANG==='en'?'Date locked in 💖':'Encontro marcado 💖'),
+    subject:(LANG==='en'?'Date locked in 💖':'Encontro marcado 💖'),
+    activity:a, when:w,
+    message:(LANG==='en'?`We have a date!  Activity: ${a} · When: ${w}`:`Temos um encontro!  Atividade: ${a} · Quando: ${w}`)
+  };
+  if(window.emailjs){
+    status.textContent=S.mailSending;
+    emailjs.send(EMAILJS.service,EMAILJS.template,params)
+      .then(()=>{status.textContent=S.mailSent;})
+      .catch(()=>{status.innerHTML=S.mailFail+' <a href="'+mailtoHref(a,w)+'">'+S.mailLink+'</a>';});
+  } else {
+    status.innerHTML=S.mailFail+' <a href="'+mailtoHref(a,w)+'">'+S.mailLink+'</a>';
+  }
+}
+document.getElementById('btnConfirm').addEventListener('click',()=>{
+  if(!(choice.date&&choice.hour)) return;
+  const a=(choice.actEmoji||'💘')+' '+choice.act, w=fmtDate(choice.date)+' · '+choice.hour;
+  document.getElementById('sumAct').textContent=a;
+  document.getElementById('sumWhen').textContent=w;
+  window.__heartBurst();
+  show('s-done');
+  notifyEmail(choice.act, w);
+});
+
+/* ================= share / restart ================= */
+document.getElementById('btnShare').addEventListener('click',()=>{
+  const txt=S.shareText((choice.actEmoji||'💘')+' '+choice.act, fmtDate(choice.date)+' às '+choice.hour);
+  if(navigator.share){ navigator.share({text:txt}).catch(()=>{}); }
+  else { window.open('https://wa.me/?text='+encodeURIComponent(txt),'_blank'); }
+});
+document.getElementById('btnRestart').addEventListener('click',()=>{
+  choice={key:null,act:null,actEmoji:null,date:null,hour:null};
+  document.getElementById('btnYes').style.transform='';
+  const no=document.getElementById('btnNo');no.style.transform='';no.style.opacity='';no.textContent=S.no;no.style.pointerEvents='';
+  document.getElementById('plead').textContent='';
+  document.getElementById('whenHint').textContent=S.hintBoth;
+  const cb=document.getElementById('btnConfirm');cb.style.opacity=.4;cb.style.pointerEvents='none';
+  document.getElementById('mailStatus').textContent='';
+  show('s-ask');
+});
+</script>
+</body>
+</html>
